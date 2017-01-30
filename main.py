@@ -53,6 +53,9 @@ if(gameState == 1):
     menu.menuprin(window,width,heigth)
 
 pygame.key.set_repeat(20,20);
+boutonres = menu.menuprin(window,width,heigth)
+print("bouton : ",boutonres)
+
 while 1:
     for event in pygame.event.get():
         if event.type == QUIT:
@@ -86,7 +89,6 @@ while 1:
     for elem in listDecors:
         if(util.isLanded(joueur1, elem) == 1):
             joueur1.setLanded(1);
-        
 
     #display all the element on screen
     util.displayAllImages(window, listHUD);
