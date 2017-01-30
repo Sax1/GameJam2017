@@ -1,7 +1,7 @@
 import pygame;
 import util;
 
-class Objet():
+class Sprite():
     # constructeur
     def __init__(self, pos_x, pos_y, imgPath):
         #initialisations et affectations d'attributs :
@@ -18,3 +18,7 @@ class Objet():
 
     def get_pos(self):
         return (self.pos_x,self.pos_y);
+
+    def set_pos(self, x, y):
+        self.pos_x = x;
+        self.pos_y = y;

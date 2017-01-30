@@ -8,4 +8,3 @@ def load_image(name):
 def displayAllImages(window, listElements):
     for elem in listElements:
         window.blit(elem.get_img(),elem.get_pos());
-    pygame.display.flip();
