@@ -42,45 +42,54 @@ listHUD = [];
 listHUD.append(sprite.Sprite(0,0,'./data/BG.jpg'));
 listDecors = [];
 listDecors.append(sprite.Sprite(0,heigth-20,'./data/Sol-1.png'));
+listDecors.append(sprite.Sprite(0,500,'./sprite/SolR1-1.png'));
 listPlayers = [];
 listPlayers.append(joueur1);
 
+################################################################################
+################################ MAIN BOUCLE ###################################
+################################################################################
+if(gameState == 1):
+    menu.menuprin(window,width,heigth)
+
 pygame.key.set_repeat(20,20);
 while 1:
-    if(gameState == 1):
-        menu.menuprin(window,width,heigth)
-    else:
-        for event in pygame.event.get():
-            if event.type == QUIT:
-                sys.exit()
-            if event.type == KEYDOWN:
-                #print event.key;
-                if(event.key == 27):
-                    sys.exit();
-                if(event.key == 122):
-                    print '1haut';
-                if( event.key == 115):
-                    print '1bas';
-                if( event.key == 113):
-                    print '1gauche';
-                    joueur1.setDeplacement(-playerDeplacement,0)
-                if( event.key == 100):
-                    print '1droit'
-                    joueur1.setDeplacement(playerDeplacement,0)
-                if(nbJoueur == 2):
-                    if(event.key == K_UP):
-                        print '2haut';
-                    if(event.key == K_DOWN):
-                        print '2bas';
-                    if(event.key == K_LEFT):
-                        print '2gauche';
-                    if(event.key == K_RIGHT):
-                        print '2droite';
-        if(joueur1.getAscend() == 0):
-            joueur1.setDeplacement(0,gravity);
+    for event in pygame.event.get():
+        if event.type == QUIT:
+            sys.exit()
+        if event.type == KEYDOWN:
+            #print event.key;
+            if(event.key == 27):
+                sys.exit();
+            if(event.key == 122):
+                print '1haut';
+            if( event.key == 115):
+                print '1bas';
+            if( event.key == 113):
+                print '1gauche';
+                joueur1.setDeplacement(-playerDeplacement,0)
+            if( event.key == 100):
+                print '1droit'
+                joueur1.setDeplacement(playerDeplacement,0)
+            if(nbJoueur == 2):
+                if(event.key == K_UP):
+                    print '2haut';
+                if(event.key == K_DOWN):
+                    print '2bas';
+                if(event.key == K_LEFT):
+                    print '2gauche';
+                if(event.key == K_RIGHT):
+                    print '2droite';
+    if(joueur1.getAscend() == 0 and joueur1.getLanded() == 0):
+        joueur1.setDeplacement(0,gravity);
 
-        #display all the element on screen
-        util.displayAllImages(window, listHUD);
-        util.displayAllImages(window, listDecors);
-        util.displayAllImages(window, listPlayers)
-        pygame.display.flip();
+    for elem in listDecors:
+        if(util.isLanded(joueur1, elem) == 1):
+            joueur1.setLanded(1);
+        
+
+    #display all the element on screen
+    util.displayAllImages(window, listHUD);
+    util.displayAllImages(window, listDecors);
+    util.displayAllImages(window, listPlayers)
+    pygame.display.flip();
