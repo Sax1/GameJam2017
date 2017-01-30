@@ -13,8 +13,8 @@ sys.path.append('./module');
 
 #Importation des classes
 import util;
-import menu
-#init
+import physic;
+import menu;
 import sprite;
 import character;
 import player;
@@ -33,10 +33,13 @@ gameState = 2;
 nbJoueur = 1;
 gravity = 5;
 playerDeplacement = 8;
+ascendDecrement = 0.5;
+
 #Creation des joueurs
 joueur1 = player.Player(50,50,'./sprite/MageDR-1.png',100,1,1,"");
 #if(nbJoueur == 2):
 #    joueur2 = player.Player(100,100,'./sprite/MageDR-1.png',100,1,2,"");
+
 #Listes des elements
 listHUD = [];
 listHUD.append(sprite.Sprite(0,0,'./data/BG.jpg'));
@@ -50,45 +53,22 @@ listPlayers.append(joueur1);
 ################################ MAIN BOUCLE ###################################
 ################################################################################
 if(gameState == 1):
-    menu.menuprin(window,width,heigth)
+    boutonRes = menu.menuprin(window,width,heigth)
+    print("bouton : ",boutonRes)
 
+#Pour avoir des inputs successifs
 pygame.key.set_repeat(20,20);
-boutonres = menu.menuprin(window,width,heigth)
-print("bouton : ",boutonres)
 
 while 1:
     for event in pygame.event.get():
         if event.type == QUIT:
             sys.exit()
         if event.type == KEYDOWN:
-            #print event.key;
-            if(event.key == 27):
-                sys.exit();
-            if(event.key == 122):
-                print '1haut';
-            if( event.key == 115):
-                print '1bas';
-            if( event.key == 113):
-                print '1gauche';
-                joueur1.setDeplacement(-playerDeplacement,0)
-            if( event.key == 100):
-                print '1droit'
-                joueur1.setDeplacement(playerDeplacement,0)
-            if(nbJoueur == 2):
-                if(event.key == K_UP):
-                    print '2haut';
-                if(event.key == K_DOWN):
-                    print '2bas';
-                if(event.key == K_LEFT):
-                    print '2gauche';
-                if(event.key == K_RIGHT):
-                    print '2droite';
-    if(joueur1.getAscend() == 0 and joueur1.getLanded() == 0):
-        joueur1.setDeplacement(0,gravity);
-
-    for elem in listDecors:
-        if(util.isLanded(joueur1, elem) == 1):
-            joueur1.setLanded(1);
+            util.actionForKeyInput(event.key,listPlayers, playerDeplacement, nbJoueur);
+    for player in listPlayers:
+        physic.applyGravity(player, gravity);
+        physic.applyCollisionWithFloor(player, listDecors);
+        physic.applyJump(player, ascendDecrement);
 
     #display all the element on screen
     util.displayAllImages(window, listHUD);

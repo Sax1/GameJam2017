@@ -7,12 +7,13 @@ class Player(character.Character):
         self.numPlayer = numPlayer;
         self.jump = 0;
         self.ascend = 0;
+        self.ascendValue = 0;
         self.landed = 0;
         self.sorts = listSorts;
 
     def setJump(self,state):
         self.jump = state;
-    def getStateJump(self):
+    def getJump(self):
         return self.jump;
     def setSorts(self, newSorts):
         self.sorts = newSorts;
@@ -29,3 +30,7 @@ class Player(character.Character):
     def jump(self):
         self.setLanded(0);
         self.setAscend(1);
+    def setAscendValue(self, value):
+        self.ascendValue = value;
+    def getAscendValue(self):
+        return self.ascendValue;
