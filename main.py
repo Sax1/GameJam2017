@@ -9,7 +9,6 @@ from pygame.locals import *;
 import sys;
 
 #On definit le path
-
 sys.path.append('./module');
 
 #Importation des classes
