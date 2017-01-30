@@ -46,9 +46,11 @@ listPlayers = [];
 listPlayers.append(joueur1);
 
 pygame.key.set_repeat(20,20);
+boutonres = menu.menuprin(window,width,heigth)
+print("bouton : ",boutonres)
 while 1:
     if(gameState == 1):
-        menu.menuprin(window,width,heigth)
+        print("grgr")
     else:
         for event in pygame.event.get():
             if event.type == QUIT:
