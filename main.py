@@ -14,12 +14,12 @@ sys.path.append('./module');
 #Importation des classes
 import util;
 import objet;
-
+import menu
 #init
 pygame.init();
 #Creation de la fenetre a la de l'ecran
 widowResolution = pygame.display.Info();
-heigth =widowResolution.current_h;
+heigth = widowResolution.current_h;
 width = widowResolution.current_w;
 window  = pygame.display.set_mode((widowResolution.current_w,widowResolution.current_h), RESIZABLE);
 
@@ -31,3 +31,4 @@ while 1:
     for event in pygame.event.get():
         if event.type == QUIT:
             sys.exit()
+    menu.menuprin(window,width,heigth)
