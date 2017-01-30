@@ -1,12 +1,12 @@
 import pygame;
-import objet;
+import sprite;
 
-class Character(Objet):
+class Character(sprite.Sprite):
     def __init__(self, pos_x, pos_y, imgPath, hp, speed):
-        Object.__init__(self, pos_x, pos_y, imgPath)
+        sprite.Sprite.__init__(self, pos_x, pos_y, imgPath)
         self.hp = hp;
         self.speed = speed;
-        self.gravity = true;
+        self.gravity = 1;
 
     def set_hp(self,newHP):
         self.hp = newHP;
@@ -22,3 +22,6 @@ class Character(Objet):
         self.gravity = state;
     def getGravity(self):
         return gravity;
+    def setDeplacement(self, x,y):
+        self.pos_x = (self.pos_x + x)*self.speed;
+        self.pos_y = (self.pos_y + y);
