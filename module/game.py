@@ -9,6 +9,7 @@ import projectile;
 def launch(window, listHUD, listDecors, listPlayers, gravity, playerDeplacement, nbJoueur, ascendDecrement,listSorts,height,width):
     while 1:
         for event in pygame.event.get():
+            listPlayers[0].set_image("./sprite/Joueur1/MageAV-1.png");
             keys = pygame.key.get_pressed();
             if event.type == QUIT:
                 sys.exit()
