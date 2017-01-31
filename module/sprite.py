@@ -25,3 +25,6 @@ class Sprite():
 
     def set_image(self,imgPath):
         self.image = util.load_image(imgPath);
+
+    def set_image2(self,img):
+        self.image = img

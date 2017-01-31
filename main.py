@@ -46,8 +46,13 @@ listPlayers = [];
 listPlayers.append(player.Player(50,50,'./sprite/Joueur1/MageAV-1.png',100,1,1,""));
 
 #Listes des elements
+posf = window.get_rect()
+sparte = sprite.Sprite(0,0,'./data/menubackgroundCastle.png')
+img = sparte.get_img().convert()
+img = pygame.transform.scale(img, (posf.right, posf.bottom))
+sparte.set_image2(img)
 listHUD = [];
-listHUD.append(sprite.Sprite(0,0,'./data/BG.jpg'));
+listHUD.append(sparte);
 listDecors = [];
 listDecors.append(sprite.Sprite(0,0,'./data/Sol-1.png'));
 listDecors.append(sprite.Sprite(0,heigth-20,'./data/Sol-1.png'));
@@ -67,7 +72,7 @@ while 1:
         elif(boutonRes==2):
             nbJoueur = 2;
             if(len(listPlayers) == 1):
-                listPlayers.append(player.Player(100,100,'./sprite/Joueur1/MageAV-1.png',100,1,2,""));
+                listPlayers.append(player.Player(100,100,'./sprite/Joueur1/Mage2AV-1.png',100,1,2,""));
             game.launch(window, listHUD, listDecors, listPlayers, gravity, playerDeplacement, nbJoueur, ascendDecrement);
         elif(boutonRes==3):
             menu.menuop(window,width,heigth)
