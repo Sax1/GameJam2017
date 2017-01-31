@@ -22,3 +22,6 @@ class Sprite():
     def set_pos(self, x, y):
         self.pos_x = x;
         self.pos_y = y;
+
+    def set_image(self,imgPath):
+        self.image = util.load_image(imgPath);
