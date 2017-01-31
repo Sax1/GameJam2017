@@ -19,6 +19,7 @@ def actionForKeyInput(keys, listPlayers, playerDeplacement, nbJoueur):
             listPlayers[0].setJump(1);
             listPlayers[0].setAscend(1);
             listPlayers[0].setAscendValue(10);
+            listPlayers[0].setDeplacement(0,-listPlayers[0].getAscendValue());
     if(keys[115]):
         print '1bas';
         sys.exit();

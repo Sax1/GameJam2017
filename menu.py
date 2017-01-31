@@ -18,11 +18,11 @@ def menuprin(window,width,height):
     buttonquit = pygame.image.load("data/boutonquitter.png")
 
     #redimension des boutons
-    #button1j = pygame.transform.scale(button1j, (width*4/16, height*5/16))
-    #button2j = pygame.transform.scale(button2j, (width*4/16, height*5/16))
-    #buttonop = pygame.transform.scale(buttonop, (width*4/16, height*5/32))
-    #buttoncred = pygame.transform.scale(buttoncred, (width*4/16, height*5/32))
-    #buttonquit = pygame.transform.scale(buttonquit, (width*4/16, height*5/32))
+    button1j = pygame.transform.scale(button1j, (width*4/16, height*5/16))
+    button2j = pygame.transform.scale(button2j, (width*4/16, height*5/16))
+    buttonop = pygame.transform.scale(buttonop, (width*4/16, height*5/32))
+    buttoncred = pygame.transform.scale(buttoncred, (width*4/16, height*5/32))
+    buttonquit = pygame.transform.scale(buttonquit, (width*4/16, height*5/32))
 
     #ajout des boutons
     window.blit(button1j, (width/16,height/6))
