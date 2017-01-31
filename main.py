@@ -39,7 +39,7 @@ playerDeplacement = 8;
 ascendDecrement = 0.5;
 
 #Creation des joueurs
-joueur1 = player.Player(50,50,'./sprite/MageDR-1.png',100,1,1,"");
+joueur1 = player.Player(50,50,'./sprite/Joueur 1/MageAV-1.png',100,1,1,"");
 
 #Listes des elements
 listHUD = [];
