@@ -13,6 +13,7 @@ sys.path.append('./module');
 
 #Importation des classes
 import util;
+import game;
 import physic;
 import menu;
 import sprite;
@@ -21,6 +22,8 @@ import player;
 
 #init pygame
 pygame.init();
+pygame.key.set_repeat(20,20);
+
 
 #Creation de la fenetre a la de l'ecran
 widowResolution = pygame.display.Info();
@@ -55,32 +58,16 @@ listPlayers.append(joueur1);
 if(gameState == 1):
     boutonRes = menu.menuprin(window,width,heigth)
     if(boutonRes==1):
-        #appel boucle principale
+        game.launch(window, listHUD, listDecors, listPlayers, gravity, playerDeplacement, nbJoueur, ascendDecrement);
     elif(boutonRes==2):
         #appel boucle principale avec j2
+        print "2";
     elif(boutonRes==3):
         #menu.menuop
+        print "3";
     elif(boutonRes==4):
         #menu.menucred
+        print "4";
     elif(boutonRes==5):
+        print "5";
         sys.exit()
-
-#Pour avoir des inputs successifs
-pygame.key.set_repeat(20,20);
-
-while 1:
-    for event in pygame.event.get():
-        if event.type == QUIT:
-            sys.exit()
-        if event.type == KEYDOWN:
-            util.actionForKeyInput(event.key,listPlayers, playerDeplacement, nbJoueur);
-    for player in listPlayers:
-        physic.applyGravity(player, gravity);
-        physic.applyCollisionWithFloor(player, listDecors);
-        physic.applyJump(player, ascendDecrement);
-
-    #display all the element on screen
-    util.displayAllImages(window, listHUD);
-    util.displayAllImages(window, listDecors);
-    util.displayAllImages(window, listPlayers)
-    pygame.display.flip();
