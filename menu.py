@@ -57,3 +57,17 @@ def menuprin(window,width,height):
                         return 4 #bouton credits
                     elif buttonquit.get_rect(left=width*11/16,top=(height*3/6)+145).collidepoint(event.pos):
                         return 5 #bouton quitter
+
+def menuop(window,width,height):
+    #fond du menu
+    posf = window.get_rect()
+    fond_e = pygame.image.load("data/menubackgroundCastle.png").convert()
+    fond = pygame.transform.scale(fond_e, (posf.right, posf.bottom))
+    window.blit(fond,(0,0))
+
+    #creation des boutons
+    button1j = pygame.image.load("data/menu1joueur.png")
+    button2j = pygame.image.load("data/menu2joueur.png")
+    buttonop = pygame.image.load("data/boutonoption.png")
+    buttoncred = pygame.image.load("data/boutoncredit.png")
+    buttonquit = pygame.image.load("data/boutonquitter.png")

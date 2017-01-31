@@ -56,13 +56,13 @@ if(gameState == 1):
     boutonRes = menu.menuprin(window,width,heigth)
     if(boutonRes==1):
         #appel boucle principale
-    if(boutonRes==2):
+    elif(boutonRes==2):
         #appel boucle principale avec j2
-    if(boutonRes==3):
+    elif(boutonRes==3):
         #menu.menuop
-    if(boutonRes==4):
+    elif(boutonRes==4):
         #menu.menucred
-    if(boutonRes==5):
+    elif(boutonRes==5):
         sys.exit()
 
 #Pour avoir des inputs successifs
