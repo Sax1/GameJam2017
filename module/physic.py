@@ -15,7 +15,6 @@ def isTouching(dir,j,listDecors):
     pointPlayerTopRigth = (j.get_pos()[0]+(j.get_img().get_width()),j.get_pos()[1]);
     pointPlayerRigthMid = (j.get_pos()[0]+(j.get_img().get_width()),j.get_pos()[1]+(j.get_img().get_height()/2));
     pointPlayerLeftMid = (j.get_pos()[0],j.get_pos()[1]+(j.get_img().get_height()/2));
-    print dir;
     for elem in listDecors:
         if(dir == 'top'):
             if(isIn(pointPlayerTopMid,elem)):

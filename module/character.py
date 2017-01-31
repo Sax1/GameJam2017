@@ -17,7 +17,7 @@ class Character(sprite.Sprite):
     def get_vitesse(self):
         return self.speed;
     def changeHealth(self, value):
-        self.hp =  hp + value;
+        self.hp =  self.hp + value;
     def setGravity(self, state):
         self.gravity = state;
     def getGravity(self):
@@ -27,3 +27,5 @@ class Character(sprite.Sprite):
         self.pos_y = (self.pos_y + y);
     def getBottemChar(self):
         return ((self.pos_x+self.image.get_height(),self.pos_y+self.image.get_width()/2))
+    def setDamage(self, dmg):
+        self.hp = self.hp + dmg;

@@ -3,8 +3,10 @@ import pygame;
 from pygame.locals import *;
 import physic;
 import util;
+import magic;
+import projectile;
 
-def launch(window, listHUD, listDecors, listPlayers, gravity, playerDeplacement, nbJoueur, ascendDecrement):
+def launch(window, listHUD, listDecors, listPlayers, gravity, playerDeplacement, nbJoueur, ascendDecrement,listSorts,height,width):
     while 1:
         for event in pygame.event.get():
             keys = pygame.key.get_pressed();
@@ -14,16 +16,19 @@ def launch(window, listHUD, listDecors, listPlayers, gravity, playerDeplacement,
                 if( event.key == 27):
                     sys.exit();
                 else:
-                    util.actionForKeyInput(keys,listPlayers, playerDeplacement, nbJoueur, listDecors);
+                    util.actionForKeyInput(keys,listPlayers, playerDeplacement, nbJoueur, listDecors, listSorts);
 
         for player in listPlayers:
             physic.applyGravity(player, gravity);
             physic.applyCollisionWithFloor(player, listDecors);
             physic.applyJump(player, ascendDecrement);
             physic.jumpCollide(player, listDecors);
+        magic.applySort(listSorts,listPlayers,height,width)
 
         #display all the element on screen
         util.displayAllImages(window, listHUD);
+        util.displayAllImages(window, listPlayers);
+        util.displayAllImages(window, listSorts);
         util.displayAllImages(window, listDecors);
-        util.displayAllImages(window, listPlayers)
+
         pygame.display.flip();
