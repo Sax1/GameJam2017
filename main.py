@@ -19,7 +19,11 @@ import menu;
 import sprite;
 import character;
 import player;
+<<<<<<< HEAD
+import factory;
+=======
 import levels;
+>>>>>>> 078e68890dfff95a3a14d7dec25277185b865f11
 
 #init pygame
 pygame.init();
@@ -33,7 +37,7 @@ width = widowResolution.current_w;
 window  = pygame.display.set_mode((widowResolution.current_w,widowResolution.current_h), FULLSCREEN);
 
 #Variables Globales
-gameState = 2;
+gameState = 1;
 nbJoueur = 1;
 gravity = 5;
 playerDeplacement = 8;
@@ -68,13 +72,12 @@ while 1:
                 listPlayers.append(player.Player(100,100,'./sprite/Joueur1/MageAV-1.png',100,1,2,""));
             game.launch(window, listHUD, listDecors, listPlayers, gravity, playerDeplacement, nbJoueur, ascendDecrement);
         elif(boutonRes==3):
-            menu.menuop(window, width, heigth);
-            print "3";
+            menu.menuop(window,width,heigth)
         elif(boutonRes==4):
             #menu.menucred
             print "4";
+            factory.listeboulefeu()
         elif(boutonRes==5):
-            print "5";
             sys.exit()
     else:
         game.launch(window, listHUD, listDecors, listPlayers, gravity, playerDeplacement, nbJoueur, ascendDecrement);
