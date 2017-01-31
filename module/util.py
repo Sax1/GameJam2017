@@ -26,9 +26,11 @@ def actionForKeyInput(keys, listPlayers, playerDeplacement, nbJoueur, listDecors
     if( keys[113]):
         if(physic.isTouching('left',listPlayers[0],listDecors) == 0):
             listPlayers[0].setDeplacement(-playerDeplacement,0)
+            listPlayers[0].set_image("./sprite/Joueur1/MageGA-1.png")
     if( keys[100]):
         if(physic.isTouching('rigth',listPlayers[0],listDecors) == 0):
             listPlayers[0].setDeplacement(playerDeplacement,0)
+            listPlayers[0].set_image("./sprite/Joueur1/MageDR-1.png")
     if(keys[32]):
         if(keys[106] and keys[121]):
             print("haut droit")
@@ -48,10 +50,16 @@ def actionForKeyInput(keys, listPlayers, playerDeplacement, nbJoueur, listDecors
             print("haut")
     if(nbJoueur == 2):
         if(keys[K_UP]):
-            print '2haut';
+            if(listPlayers[1].getJump() == 0 and listPlayers[1].getLanded() == 1):
+                listPlayers[1].setJump(1);
+                listPlayers[1].setAscend(1);
+                listPlayers[1].setAscendValue(10);
+                listPlayers[1].setDeplacement(0,-listPlayers[1].getAscendValue());
         if(keys[K_DOWN]):
             print '2bas';
         if(keys[K_LEFT]):
             listPlayers[1].setDeplacement(-playerDeplacement,0)
+            listPlayers[1].set_image("./sprite/Joueur2/Mage2GA-1.png")
         if(keys[K_RIGHT]):
             listPlayers[1].setDeplacement(playerDeplacement,0)
+            listPlayers[1].set_image("./sprite/Joueur2/Mage2DR-1.png")
