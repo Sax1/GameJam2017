@@ -14,7 +14,7 @@ def launch(window, listHUD, listDecors, listPlayers, gravity, playerDeplacement,
                 if( event.key == 27):
                     sys.exit();
                 else:
-                    util.actionForKeyInput(keys,listPlayers, playerDeplacement, nbJoueur);
+                    util.actionForKeyInput(keys,listPlayers, playerDeplacement, nbJoueur, listDecors);
 
         for player in listPlayers:
             physic.applyGravity(player, gravity);

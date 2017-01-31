@@ -9,6 +9,16 @@ def isLanded(j,elem):
     else:
         return 0;
 
+def isTouching(dir,j,listDecors):
+    if(dir == 'top'):
+        pointPlayer = (j.get_pos()[0]+(j.get_img().get_width()/2),j.get_pos()[1]);
+        print 'Nope';
+    elif(dir == 'rigth'):
+        pointPlayer = (j.get_pos()[0]+(j.get_img().get_width()),j.get_pos()[1]+(j.get_img().get_height()/2));
+    elif(dir == 'left'):
+        pointPlayer = (j.get_pos()[0],j.get_pos()[1]+(j.get_img().get_height()/2));
+        print 'nopeBis';
+
 def applyCollisionWithFloor(player, listDecors):
     for elem in listDecors:
         if(isLanded(player, elem) == 1):

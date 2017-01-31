@@ -33,7 +33,7 @@ width = widowResolution.current_w;
 window  = pygame.display.set_mode((widowResolution.current_w,widowResolution.current_h), FULLSCREEN);
 
 #Variables Globales
-gameState = 2;
+gameState = 1;
 nbJoueur = 1;
 gravity = 5;
 playerDeplacement = 8;
@@ -50,6 +50,8 @@ listDecors = [];
 listDecors.append(sprite.Sprite(0,0,'./data/Sol-1.png'));
 listDecors.append(sprite.Sprite(0,heigth-20,'./data/Sol-1.png'));
 listDecors.append(sprite.Sprite(0,500,'./data/SolR1-1.png'));
+listDecors.append(sprite.Sprite(0,0,'./data/Mur1-1.png'));
+listDecors.append(sprite.Sprite(width-20,0,'./data/Mur1-1.png'));
 
 ################################################################################
 ################################ MAIN BOUCLE ###################################
@@ -59,6 +61,7 @@ while 1:
         boutonRes = menu.menuprin(window,width,heigth)
         if(boutonRes==1):
             nbJoueur = 1;
+            game.launch(window, listHUD, listDecors, listPlayers, gravity, playerDeplacement, nbJoueur, ascendDecrement);
         elif(boutonRes==2):
             nbJoueur = 2;
             if(len(listPlayers) == 1):
