@@ -20,6 +20,7 @@ def launch(window, listHUD, listDecors, listPlayers, gravity, playerDeplacement,
             physic.applyGravity(player, gravity);
             physic.applyCollisionWithFloor(player, listDecors);
             physic.applyJump(player, ascendDecrement);
+            physic.jumpCollide(player, listDecors);
 
         #display all the element on screen
         util.displayAllImages(window, listHUD);

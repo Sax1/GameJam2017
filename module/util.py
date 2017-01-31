@@ -24,10 +24,10 @@ def actionForKeyInput(keys, listPlayers, playerDeplacement, nbJoueur, listDecors
         print '1bas';
         sys.exit();
     if( keys[113]):
-        if(not physic.isTouching('left',listPlayers[0],listDecors)):
+        if(physic.isTouching('left',listPlayers[0],listDecors) == 0):
             listPlayers[0].setDeplacement(-playerDeplacement,0)
     if( keys[100]):
-        if(not physic.isTouching('right',listPlayers[0],listDecors)):
+        if(physic.isTouching('rigth',listPlayers[0],listDecors) == 0):
             listPlayers[0].setDeplacement(playerDeplacement,0)
     if(nbJoueur == 2):
         if(keys[K_UP]):
