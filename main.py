@@ -41,7 +41,7 @@ ascendDecrement = 0.5;
 #Creation des joueurs
 joueur1 = player.Player(50,50,'./sprite/MageDR-1.png',100,1,1,"");
 #if(nbJoueur == 2):
-#    joueur2 = player.Player(100,100,'./sprite/MageDR-1.png',100,1,2,"");
+joueur2 = player.Player(100,100,'./sprite/MageDR-1.png',100,1,2,"");
 
 #Listes des elements
 listHUD = [];
@@ -61,9 +61,12 @@ if(gameState == 1):
         game.launch(window, listHUD, listDecors, listPlayers, gravity, playerDeplacement, nbJoueur, ascendDecrement);
     elif(boutonRes==2):
         #appel boucle principale avec j2
+        listPlayers.append(joueur2);
+        nbJoueur= 2;
+        game.launch(window, listHUD, listDecors, listPlayers, gravity, playerDeplacement, nbJoueur, ascendDecrement);
         print "2";
     elif(boutonRes==3):
-        #menu.menuop
+        menu.menuop(window,width,heigth)
         print "3";
     elif(boutonRes==4):
         #menu.menucred
