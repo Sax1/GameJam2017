@@ -19,11 +19,9 @@ import menu;
 import sprite;
 import character;
 import player;
-<<<<<<< HEAD
 import factory;
-=======
 import levels;
->>>>>>> 078e68890dfff95a3a14d7dec25277185b865f11
+
 
 #init pygame
 pygame.init();
