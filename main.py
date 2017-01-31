@@ -32,14 +32,14 @@ width = widowResolution.current_w;
 window  = pygame.display.set_mode((widowResolution.current_w,widowResolution.current_h), FULLSCREEN);
 
 #Variables Globales
-gameState = 2;
+gameState = 1;
 nbJoueur = 1;
 gravity = 5;
 playerDeplacement = 8;
-ascendDecrement = 0.5;
+ascendDecrement = 0.2;
 
 #Creation des joueurs
-joueur1 = player.Player(50,50,'./sprite/Joueur 1/MageAV-1.png',100,1,1,"");
+joueur1 = player.Player(50,50,'./sprite/Joueur1/MageAV-1.png',100,1,1,"");
 
 
 #Listes des elements
@@ -61,7 +61,7 @@ while 1:
             nbJoueur = 1;
         elif(boutonRes==2):
             nbJoueur = 2;
-            listPlayers.append(player.Player(100,100,'./sprite/MageDR-1.png',100,1,2,""));
+            listPlayers.append(player.Player(100,100,'./sprite/Joueur1/MageAV-1.png',100,1,2,""));
             game.launch(window, listHUD, listDecors, listPlayers, gravity, playerDeplacement, nbJoueur, ascendDecrement);
         elif(boutonRes==3):
             #menu.menuop

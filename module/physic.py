@@ -14,14 +14,21 @@ def applyCollisionWithFloor(player, listDecors):
         if(isLanded(player, elem) == 1):
             player.setLanded(1);
             player.setJump(0);
+            player.setAscend(0);
+            player.setAscendValue(10);
             break;
         else:
             player.setLanded(0);
 
 def applyGravity(player, gravity):
-    if(player.getAscend() == 0 and player.getLanded() == 0):
+    if(player.getAscend() == 0 and player.getLanded() == 0 and player.getJump() == 0):
         player.setDeplacement(0,gravity);
 
 def applyJump(player, ascendDecrement):
-    #TODO
-    return 0;
+    if(player.getJump() == 1 and player.getAscendValue() != 0):
+        player.setDeplacement(0, -player.getAscendValue());
+        player.setAscendValue(player.getAscendValue()-ascendDecrement);
+    elif(player.getJump() == 1 and player.getAscendValue() == 0):
+        player.setJump(0);
+        player.setAscend(0);
+        player.setAscendValue(10);
