@@ -16,6 +16,9 @@ def launch(window, listHUD, listDecors, listPlayers, gravity, playerDeplacement,
             physic.applyCollisionWithFloor(player, listDecors);
             physic.applyJump(player, ascendDecrement);
 
+            print "status : ";
+            print player.getLanded();
+            print player.getAscend();
         #display all the element on screen
         util.displayAllImages(window, listHUD);
         util.displayAllImages(window, listDecors);

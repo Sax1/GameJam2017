@@ -24,10 +24,8 @@ def actionForKeyInput(keyValue, listPlayers, playerDeplacement, nbJoueur):
     if( keyValue == 115):
         print '1bas';
     if( keyValue == 113):
-        print '1gauche';
         listPlayers[0].setDeplacement(-playerDeplacement,0)
     if( keyValue == 100):
-        print '1droit'
         listPlayers[0].setDeplacement(playerDeplacement,0)
     if(nbJoueur == 2):
         if(keyValue == K_UP):
@@ -35,6 +33,6 @@ def actionForKeyInput(keyValue, listPlayers, playerDeplacement, nbJoueur):
         if(keyValue == K_DOWN):
             print '2bas';
         if(keyValue == K_LEFT):
-            print '2gauche';
+            listPlayers[1].setDeplacement(-playerDeplacement,0)
         if(keyValue == K_RIGHT):
-            print '2droite';
+            listPlayers[1].setDeplacement(playerDeplacement,0)

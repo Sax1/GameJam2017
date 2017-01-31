@@ -32,7 +32,7 @@ width = widowResolution.current_w;
 window  = pygame.display.set_mode((widowResolution.current_w,widowResolution.current_h), FULLSCREEN);
 
 #Variables Globales
-gameState = 1;
+gameState = 2;
 nbJoueur = 1;
 gravity = 5;
 playerDeplacement = 8;
@@ -71,3 +71,5 @@ if(gameState == 1):
     elif(boutonRes==5):
         print "5";
         sys.exit()
+else:
+    game.launch(window, listHUD, listDecors, listPlayers, gravity, playerDeplacement, nbJoueur, ascendDecrement);
