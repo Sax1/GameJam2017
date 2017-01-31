@@ -24,3 +24,4 @@ def applyGravity(player, gravity):
 
 def applyJump(player, ascendDecrement):
     #TODO
+    return 0;

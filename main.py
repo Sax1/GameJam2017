@@ -29,7 +29,7 @@ width = widowResolution.current_w;
 window  = pygame.display.set_mode((widowResolution.current_w,widowResolution.current_h), FULLSCREEN);
 
 #Variables Globales
-gameState = 2;
+gameState = 1;
 nbJoueur = 1;
 gravity = 5;
 playerDeplacement = 8;
@@ -54,7 +54,16 @@ listPlayers.append(joueur1);
 ################################################################################
 if(gameState == 1):
     boutonRes = menu.menuprin(window,width,heigth)
-    print("bouton : ",boutonRes)
+    if(boutonRes==1):
+        #appel boucle principale
+    if(boutonRes==2):
+        #appel boucle principale avec j2
+    if(boutonRes==3):
+        #menu.menuop
+    if(boutonRes==4):
+        #menu.menucred
+    if(boutonRes==5):
+        sys.exit()
 
 #Pour avoir des inputs successifs
 pygame.key.set_repeat(20,20);
