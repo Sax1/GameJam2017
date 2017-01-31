@@ -23,30 +23,29 @@ def actionForKeyInput(keys, listPlayers, playerDeplacement, nbJoueur, listDecors
             listPlayers[0].setDeplacement(0,-listPlayers[0].getAscendValue());
     if(keys[115]):
         print '1bas';
-        sys.exit();
+        #sys.exit();
     if( keys[113]):
         if(physic.isTouching('left',listPlayers[0],listDecors) == 0):
             listPlayers[0].setDeplacement(-playerDeplacement,0)
     if( keys[100]):
         if(physic.isTouching('rigth',listPlayers[0],listDecors) == 0):
             listPlayers[0].setDeplacement(playerDeplacement,0)
-    if(keys[32]):
-        if(keys[106] and keys[121]):
-            print("haut droit")
-        elif(keys[106] and keys[104]):
-            print("bas droit")
-        elif(keys[106]):#droite
-            magic.launchBoule(listSorts, listPlayers[0])
-        elif(keys[103] and keys[104]):
-            print("bas gauche")
-        elif(keys[103] and keys[121]):
-            print("haut gauche")
-        elif(keys[103]):#gauche
-            print("gauche")
-        elif(keys[104]):#bas
-            print("bas")
-        elif(keys[121]):#haut
-            print("haut")
+    if(keys[106] and keys[121]):
+        print("haut droit")
+    elif(keys[106] and keys[104]):
+        print("bas droit")
+    elif(keys[106]):#droite
+        magic.launchBoule(listSorts, listPlayers[0])
+    elif(keys[103] and keys[104]):
+        print("bas gauche")
+    elif(keys[103] and keys[121]):
+        print("haut gauche")
+    elif(keys[103]):#gauche
+        print("gauche")
+    elif(keys[104]):#bas
+        print("bas")
+    elif(keys[121]):#haut
+        print("haut")
     if(nbJoueur == 2):
         if(keys[K_UP]):
             print '2haut';
