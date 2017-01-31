@@ -40,36 +40,36 @@ ascendDecrement = 0.5;
 
 #Creation des joueurs
 joueur1 = player.Player(50,50,'./sprite/MageDR-1.png',100,1,1,"");
-#if(nbJoueur == 2):
-#    joueur2 = player.Player(100,100,'./sprite/MageDR-1.png',100,1,2,"");
 
 #Listes des elements
 listHUD = [];
 listHUD.append(sprite.Sprite(0,0,'./data/BG.jpg'));
 listDecors = [];
 listDecors.append(sprite.Sprite(0,heigth-20,'./data/Sol-1.png'));
-listDecors.append(sprite.Sprite(0,500,'./sprite/SolR1-1.png'));
+listDecors.append(sprite.Sprite(0,500,'./data/SolR1-1.png'));
 listPlayers = [];
 listPlayers.append(joueur1);
 
 ################################################################################
 ################################ MAIN BOUCLE ###################################
 ################################################################################
-if(gameState == 1):
-    boutonRes = menu.menuprin(window,width,heigth)
-    if(boutonRes==1):
+while 1:
+    if(gameState == 1):
+        boutonRes = menu.menuprin(window,width,heigth)
+        if(boutonRes==1):
+            nbJoueur = 1;
+        elif(boutonRes==2):
+            nbJoueur = 2;
+            listPlayers.append(player.Player(100,100,'./sprite/MageDR-1.png',100,1,2,""));
+            game.launch(window, listHUD, listDecors, listPlayers, gravity, playerDeplacement, nbJoueur, ascendDecrement);
+        elif(boutonRes==3):
+            #menu.menuop
+            print "3";
+        elif(boutonRes==4):
+            #menu.menucred
+            print "4";
+        elif(boutonRes==5):
+            print "5";
+            sys.exit()
+    else:
         game.launch(window, listHUD, listDecors, listPlayers, gravity, playerDeplacement, nbJoueur, ascendDecrement);
-    elif(boutonRes==2):
-        #appel boucle principale avec j2
-        print "2";
-    elif(boutonRes==3):
-        #menu.menuop
-        print "3";
-    elif(boutonRes==4):
-        #menu.menucred
-        print "4";
-    elif(boutonRes==5):
-        print "5";
-        sys.exit()
-else:
-    game.launch(window, listHUD, listDecors, listPlayers, gravity, playerDeplacement, nbJoueur, ascendDecrement);
