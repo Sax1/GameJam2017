@@ -1,6 +1,6 @@
 import sys;
 import pygame;
-from pygame.locals import *
+from pygame.locals import *;
 import physic;
 import util;
 

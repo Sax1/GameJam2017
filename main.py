@@ -19,6 +19,7 @@ import menu;
 import sprite;
 import character;
 import player;
+import levels;
 
 #init pygame
 pygame.init();
@@ -32,24 +33,23 @@ width = widowResolution.current_w;
 window  = pygame.display.set_mode((widowResolution.current_w,widowResolution.current_h), FULLSCREEN);
 
 #Variables Globales
-gameState = 1;
+gameState = 2;
 nbJoueur = 1;
 gravity = 5;
 playerDeplacement = 8;
 ascendDecrement = 0.2;
 
 #Creation des joueurs
-joueur1 = player.Player(50,50,'./sprite/Joueur1/MageAV-1.png',100,1,1,"");
-
+listPlayers = [];
+listPlayers.append(player.Player(50,50,'./sprite/Joueur1/MageAV-1.png',100,1,1,""));
 
 #Listes des elements
 listHUD = [];
 listHUD.append(sprite.Sprite(0,0,'./data/BG.jpg'));
 listDecors = [];
+listDecors.append(sprite.Sprite(0,0,'./data/Sol-1.png'));
 listDecors.append(sprite.Sprite(0,heigth-20,'./data/Sol-1.png'));
 listDecors.append(sprite.Sprite(0,500,'./data/SolR1-1.png'));
-listPlayers = [];
-listPlayers.append(joueur1);
 
 ################################################################################
 ################################ MAIN BOUCLE ###################################
@@ -61,7 +61,8 @@ while 1:
             nbJoueur = 1;
         elif(boutonRes==2):
             nbJoueur = 2;
-            listPlayers.append(player.Player(100,100,'./sprite/Joueur1/MageAV-1.png',100,1,2,""));
+            if(len(listPlayers) == 1):
+                listPlayers.append(player.Player(100,100,'./sprite/Joueur1/MageAV-1.png',100,1,2,""));
             game.launch(window, listHUD, listDecors, listPlayers, gravity, playerDeplacement, nbJoueur, ascendDecrement);
         elif(boutonRes==3):
             menu.menuop(window, width, heigth);
