@@ -1,5 +1,6 @@
 import sys
 import pygame
+from pygame.locals import *;
 
 #To load an image with a given path
 def load_image(name):
@@ -11,28 +12,26 @@ def displayAllImages(window, listElements):
     for elem in listElements:
         window.blit(elem.get_img(),elem.get_pos());
 
-def actionForKeyInput(keyValue, listPlayers, playerDeplacement, nbJoueur):
-    #print keyValue;
-    if(keyValue == 27):
-        sys.exit();
-    if(keyValue == 122):
+def actionForKeyInput(keys, listPlayers, playerDeplacement, nbJoueur):
+    if(keys[122]):
         print '1haut';
-        if(player.getJump() == 0):
-            player.setJump(1);
-            player.setAscend(1);
-            player.setAscendValue(10);
-    if( keyValue == 115):
+        if(listPlayers[0].getJump() == 0 and listPlayers[0].getLanded() == 1):
+            listPlayers[0].setJump(1);
+            listPlayers[0].setAscend(1);
+            listPlayers[0].setAscendValue(10);
+    if(keys[115]):
         print '1bas';
-    if( keyValue == 113):
+        sys.exit();
+    if( keys[113]):
         listPlayers[0].setDeplacement(-playerDeplacement,0)
-    if( keyValue == 100):
+    if( keys[100]):
         listPlayers[0].setDeplacement(playerDeplacement,0)
     if(nbJoueur == 2):
-        if(keyValue == K_UP):
+        if(keys[K_UP]):
             print '2haut';
-        if(keyValue == K_DOWN):
+        if(keys[K_DOWN]):
             print '2bas';
-        if(keyValue == K_LEFT):
+        if(keys[K_LEFT]):
             listPlayers[1].setDeplacement(-playerDeplacement,0)
-        if(keyValue == K_RIGHT):
+        if(keys[K_RIGHT]):
             listPlayers[1].setDeplacement(playerDeplacement,0)
