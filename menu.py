@@ -67,11 +67,11 @@ def menuop(window,width,height):
 
     #creation bouton retour menu
     buttonretour = pygame.image.load("data/flecheretour.png")
-    buttonretour = pygame.transform.scale(buttonretour, (width/16, height/16))
-    window.blit(buttonretour, (width*15/16,height*15/16))
+    buttonretour = pygame.transform.scale(buttonretour, (width*2/16, height*2/16))
+    window.blit(buttonretour, (width*14/16,height*14/16))
     # Affichage de la doc
     doctouche = pygame.image.load("data/doctouchedejeu.png")
-    doctouche = pygame.transform.scale(doctouche, (width*4/6, height*5/6))
+    doctouche = pygame.transform.scale(doctouche, (width*4/6, height*14/16))
     window.blit(doctouche, (width/16,height/16))
     pygame.display.flip()
 
@@ -82,6 +82,6 @@ def menuop(window,width,height):
                 continuer = 0
             elif event.type == MOUSEBUTTONUP: # quand je relache le bouton
                 if event.button == 1: # 1= clique gauche
-                    if buttonretour.get_rect(left=width*15/16,top=height*15/16).collidepoint(event.pos):
+                    if buttonretour.get_rect(left=width*14/16,top=height*14/16).collidepoint(event.pos):
                         #retour menu principal
                         return 0;

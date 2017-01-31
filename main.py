@@ -19,6 +19,7 @@ import menu;
 import sprite;
 import character;
 import player;
+import factory;
 
 #init pygame
 pygame.init();
@@ -32,7 +33,7 @@ width = widowResolution.current_w;
 window  = pygame.display.set_mode((widowResolution.current_w,widowResolution.current_h), FULLSCREEN);
 
 #Variables Globales
-gameState = 2;
+gameState = 1;
 nbJoueur = 1;
 gravity = 5;
 playerDeplacement = 8;
@@ -65,12 +66,11 @@ while 1:
             game.launch(window, listHUD, listDecors, listPlayers, gravity, playerDeplacement, nbJoueur, ascendDecrement);
         elif(boutonRes==3):
             menu.menuop(window,width,heigth)
-            print "3";
         elif(boutonRes==4):
             #menu.menucred
             print "4";
+            factory.listeboulefeu()
         elif(boutonRes==5):
-            print "5";
             sys.exit()
     else:
         game.launch(window, listHUD, listDecors, listPlayers, gravity, playerDeplacement, nbJoueur, ascendDecrement);
