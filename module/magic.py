@@ -6,9 +6,10 @@ import physic
 import character
 
 def applySort(listSorts,listEntity,height,width):
-    seekAndDestroy(listEntity, listSorts);
-    isOutside(listSorts,height,width);
-    applyDeplacement(listSorts);
+    for listSort in listSorts:
+        seekAndDestroy(listEntity, listSort);
+        isOutside(listSort,height,width);
+        applyDeplacement(listSort);
 
 def seekAndDestroy(listEntity, listSorts):
     for entity in listEntity:

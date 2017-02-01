@@ -41,5 +41,5 @@ class Player(character.Character):
         elif (val == -1):
             if(self.sortCourant == 0):
                 self.sortCourant = 2
-            else
+            else:
                 self.sortCourant = self.sortCourant+val

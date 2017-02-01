@@ -47,8 +47,10 @@ listPlayers.append(player.Player(50,50,'./sprite/Joueur1/MageAV-1.png',100,1,1,"
 
 #Listes des elements
 tabPathBDF = ['./sprite/attaques+mobs/BouledeFeu/bouledefeuD.png','./sprite/attaques+mobs/BouledeFeu/bouledefeuBD.png','./sprite/attaques+mobs/BouledeFeu/bouledefeuB.png','./sprite/attaques+mobs/BouledeFeu/bouledefeuBG.png','./sprite/attaques+mobs/BouledeFeu/bouledefeuG.png','./sprite/attaques+mobs/BouledeFeu/bouledefeuHG.png','./sprite/attaques+mobs/BouledeFeu/bouledefeuH.png','./sprite/attaques+mobs/BouledeFeu/bouledefeuHD.png']
-tabPathPDG
-tabImgPath = []
+tabPathPDG = ['./sprite/attaques+mobs/PicDeGlace/picGlaceD.png','./sprite/attaques+mobs/PicDeGlace/picGlaceBD.png','./sprite/attaques+mobs/PicDeGlace/picGlaceB.png','./sprite/attaques+mobs/PicDeGlace/picGlaceBG.png','./sprite/attaques+mobs/PicDeGlace/picGlaceG.png','./sprite/attaques+mobs/PicDeGlace/picGlaceHG.png','./sprite/attaques+mobs/PicDeGlace/picGlaceH.png','./sprite/attaques+mobs/PicDeGlace/picGlaceHD.png']
+tabPathV = ['./sprite/Joueur1/MageAV-1.png','']
+
+listeSort = [factory.listeboulefeu(tabPathBDF),factory.listePicGlace(tabPathPDG),factory.listeVent(tabPathV)]
 
 posf = window.get_rect()
 sparte = sprite.Sprite(0,0,'./data/menubackgroundCastle.png')
@@ -64,7 +66,7 @@ listDecors.append(sprite.Sprite(0,500,'./data/SolR1-1.png'));
 listDecors.append(sprite.Sprite(0,0,'./data/Mur1-1.png'));
 listDecors.append(sprite.Sprite(width-20,0,'./data/Mur1-1.png'));
 
-listeboulefeu = factory.listeboulefeu();
+
 ################################################################################
 ################################ MAIN BOUCLE ###################################
 ################################################################################
@@ -73,12 +75,12 @@ while 1:
         boutonRes = menu.menuprin(window,width,height)
         if(boutonRes==1):
             nbJoueur = 1;
-            game.launch(window, listHUD, listDecors, listPlayers, gravity, playerDeplacement, nbJoueur, ascendDecrement,listeboulefeu,height,width);
+            game.launch(window, listHUD, listDecors, listPlayers, gravity, playerDeplacement, nbJoueur, ascendDecrement,listeSort,height,width);
         elif(boutonRes==2):
             nbJoueur = 2;
             if(len(listPlayers) == 1):
                 listPlayers.append(player.Player(100,100,'./sprite/Joueur2/Mage2AV-1.png',100,1,2,""));
-            game.launch(window, listHUD, listDecors, listPlayers, gravity, playerDeplacement, nbJoueur, ascendDecrement,listeboulefeu,height,width);
+            game.launch(window, listHUD, listDecors, listPlayers, gravity, playerDeplacement, nbJoueur, ascendDecrement,listeSort,height,width);
         elif(boutonRes==3):
             menu.menuop(window,width,height)
         elif(boutonRes==4):
@@ -88,4 +90,4 @@ while 1:
         elif(boutonRes==5):
             sys.exit()
     else:
-        game.launch(window, listHUD, listDecors, listPlayers, gravity, playerDeplacement, nbJoueur, ascendDecrement,listeboulefeu,height,width);
+        game.launch(window, listHUD, listDecors, listPlayers, gravity, playerDeplacement, nbJoueur, ascendDecrement,listeSort,height,width);

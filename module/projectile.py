@@ -4,8 +4,8 @@ import sprite;
 
 class Projectile(sprite.Sprite):
     """docstring for ."""
-    def __init__(self,pos_x, pos_y, imgTab,speed,deplacement,degat,present):
-        sprite.Sprite.__init__(self, pos_x, pos_y, imgTab[0])
+    def __init__(self,pos_x, pos_y, path,speed,deplacement,degat,present,imgTab):
+        sprite.Sprite.__init__(self, pos_x, pos_y, path)
         self.imgTab = imgTab
         self.degat = degat
         self.speed = speed

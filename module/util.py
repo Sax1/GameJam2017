@@ -43,27 +43,27 @@ def touchJ1(keys, player, listDecors, playerDeplacement, listSorts):
             player.set_image("./sprite/Joueur1/MageDR-1.png")
     if(keys[106] and keys[121]):
         print("haut droit")
-        magic.launchBoule((1,-1),listSorts, player)
+        lauchboulecourant(player,(1,-1),listSorts)
     elif(keys[106] and keys[104]):
         print("bas droit")
-        magic.launchBoule((1,1),listSorts, player)
+        lauchboulecourant(player,(1,1),listSorts)
     elif(keys[106]):#droite
-        magic.launchBoule((1,0),listSorts, player)
+        lauchboulecourant(player,(1,0),listSorts)
     elif(keys[103] and keys[104]):
         print("bas gauche")
-        magic.launchBoule((-1,1),listSorts, player)
+        lauchboulecourant(player,(-1,1),listSorts)
     elif(keys[103] and keys[121]):
         print("haut gauche")
-        magic.launchBoule((-1,-1),listSorts, player)
+        lauchboulecourant(player,(-1,-1),listSorts)
     elif(keys[103]):#gauche
         print("gauche")
-        magic.launchBoule((-1,0),listSorts, player)
+        lauchboulecourant(player,(-1,0),listSorts)
     elif(keys[104]):#bas
         print("bas")
-        magic.launchBoule((0,1),listSorts, player)
+        lauchboulecourant(player,(0,1),listSorts)
     elif(keys[121]):#haut
         print("haut")
-        magic.launchBoule((0,-1),listSorts, player)
+        lauchboulecourant(player,(0,-1),listSorts)
 
 def touchJ2(keys, player, listDecors, playerDeplacement, listSorts):
     if(keys[54]):
@@ -88,24 +88,32 @@ def touchJ2(keys, player, listDecors, playerDeplacement, listSorts):
             player.set_image("./sprite/Joueur2/Mage2DR-1.png")
     if(keys[51] and keys[53]):
         print("haut droit")
-        magic.launchBoule((1,-1),listSorts, player)
+        lauchboulecourant(player,(1,-1),listSorts)
     elif(keys[50] and keys[51]):
         print("bas droit")
-        magic.launchBoule((1,1),listSorts, player)
+        lauchboulecourant(player,(1,1),listSorts)
     elif(keys[51]):#droite
-        magic.launchBoule((1,0),listSorts, player)
+        lauchboulecourant(player,(1,0),listSorts)
     elif(keys[49] and keys[50]):
         print("bas gauche")
-        magic.launchBoule((-1,1),listSorts, player)
+        lauchboulecourant(player,(-1,1),listSorts)
     elif(keys[49] and keys[53]):
         print("haut gauche")
-        magic.launchBoule((-1,-1),listSorts, player)
+        lauchboulecourant(player,(-1,-1),listSorts)
     elif(keys[49]):#gauche
         print("gauche")
-        magic.launchBoule((-1,0),listSorts, player)
+        lauchboulecourant(player,(-1,0),listSorts)
     elif(keys[50]):#bas
         print("bas")
-        magic.launchBoule((0,1),listSorts, player)
+        lauchboulecourant(player,(0,1),listSorts)
     elif(keys[53]):#haut
         print("haut")
-        magic.launchBoule((0,-1),listSorts, player)
+        lauchboulecourant(player,(0,-1),listSorts)
+
+    def lauchboulecourant(player, playerDeplacement, listSorts,direction):
+        if (player.sortCourant == 0):
+            magic.launchBoule(playerDeplacement,listSorts[0], player,direction)
+        elif(player.sortCourant == 1):
+            magic.launchBoule(playerDeplacement,listSorts[1], player,direction)
+        elif(player.sortCourant == 2):
+            magic.launchBoule(playerDeplacement,listSorts[2], player,direction)
