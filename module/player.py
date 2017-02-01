@@ -5,21 +5,15 @@ class Player(character.Character):
     def __init__(self, pos_x, pos_y, imgPath, hp, speed, numPlayer, listSorts):
         character.Character.__init__(self, pos_x, pos_y, imgPath, hp, speed)
         self.numPlayer = numPlayer;
-        self.jump = 0;
-        self.ascend = 0;
-        self.ascendValue = 0;
-        self.landed = 0;
         self.sorts = listSorts;
         self.sortCourant = 0;
 
-    def setJump(self,state):
-        self.jump = state;
-    def getJump(self):
-        return self.jump;
+
     def setSorts(self, newSorts):
         self.sorts = newSorts;
     def getSorts(self):
         return self.sorts;
+<<<<<<< HEAD
     def getAscend(self):
         return self.ascend;
     def getLanded(self):
@@ -43,3 +37,5 @@ class Player(character.Character):
                 self.sortCourant = 2
             else:
                 self.sortCourant = self.sortCourant+val
+=======
+>>>>>>> bc3e92971c38bd4e61a55c3bd0b638b03226df43
