@@ -7,6 +7,7 @@ class Character(sprite.Sprite):
         self.hp = hp;
         self.speed = speed;
         self.gravity = 1;
+        self.alive = 1;
 
     def set_hp(self,newHP):
         self.hp = newHP;
@@ -29,3 +30,10 @@ class Character(sprite.Sprite):
         return ((self.pos_x+self.image.get_height(),self.pos_y+self.image.get_width()/2))
     def setDamage(self, dmg):
         self.hp = self.hp + dmg;
+    def isDead(self):
+        if(self.alive == 1 and self.hp <= 0):
+            self.alive = 0;
+            self.set_pos(-500,-500);
+            return 1;
+        else:
+            return 0;
