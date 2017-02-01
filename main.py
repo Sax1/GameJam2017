@@ -73,7 +73,7 @@ while 1:
         elif(boutonRes==2):
             nbJoueur = 2;
             if(len(listPlayers) == 1):
-                listPlayers.append(player.Player(100,100,'./sprite/Joueur1/MageAV-1.png',100,1,2,""));
+                listPlayers.append(player.Player(100,100,'./sprite/Joueur2/Mage2AV-1.png',100,1,2,""));
             game.launch(window, listHUD, listDecors, listPlayers, gravity, playerDeplacement, nbJoueur, ascendDecrement,listeboulefeu,height,width);
         elif(boutonRes==3):
             menu.menuop(window,width,height)
