@@ -2,7 +2,7 @@ import pygame;
 import sprite;
 
 class Character(sprite.Sprite):
-    def __init__(self, pos_x, pos_y, imgPath, hp, speed):
+    def __init__(self, pos_x, pos_y, imgPath, hp, speed, statut):
         sprite.Sprite.__init__(self, pos_x, pos_y, imgPath)
         self.hp = hp;
         self.speed = speed;
@@ -12,6 +12,7 @@ class Character(sprite.Sprite):
         self.ascendValue = 0;
         self.landed = 0;
         self.jump = 0;
+        self.statut = "";
 
     def set_hp(self,newHP):
         self.hp = newHP;
@@ -61,3 +62,7 @@ class Character(sprite.Sprite):
     def jump(self):
         self.setLanded(0);
         self.setAscend(1);
+    def setStatut (self, newStatut):
+        self.statut = newStatut;
+    def getStatut (self):
+        return self.statut;

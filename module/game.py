@@ -5,8 +5,9 @@ import physic;
 import util;
 import magic;
 import projectile;
+import mobs
 
-def launch(window, listHUD, listDecors, listPlayers, gravity, playerDeplacement, nbJoueur, ascendDecrement,listSorts,height,width):
+def launch(window, listHUD, listDecors, listPlayers, listEnnemis, gravity, playerDeplacement, nbJoueur, ascendDecrement,listSorts,height,width):
     while 1:
         for event in pygame.event.get():
             listPlayers[0].set_image("./sprite/Joueur1/MageAV-1.png");
@@ -27,10 +28,37 @@ def launch(window, listHUD, listDecors, listPlayers, gravity, playerDeplacement,
                 physic.jumpCollide(player, listDecors);
         magic.applySort(listSorts,listPlayers,height,width)
 
+
+        for squelette in listEnnemis[0]:
+            if(not squelette.isDead()):
+                physic.applyGravity(squelette, gravity);
+                physic.applyCollisionWithFloor(squelette, listDecors);
+                physic.applyJump(squelette, ascendDecrement);
+                physic.jumpCollide(squelette, listDecors);
+                if(len(listPlayers) == 2):
+                    if ( (abs(squelette.pos_x-listPlayers[0].pos_x)) < (abs(squelette.pos_x-listPlayers[1].pos_x)) ):
+                        jCible = listPlayers[0];
+                    else:
+                        jCible = listPlayers[1];
+                    if (squelette.pos_x < jCible.pos_x):
+                        squelette.setDeplacement(6,0);
+                    elif (squelette.pos_x > jCible.pos_x):
+                        squelette.setDeplacement(-6,0);
+                else:
+                    jCible = listPlayers[0];
+                    if (squelette.pos_x < jCible.pos_x):
+                        squelette.setDeplacement(6,0);
+                    elif (squelette.pos_x > jCible.pos_x):
+                        squelette.setDeplacement(-6,0);
+
+        magic.applySort(listSorts,listEnnemis[0],height,width)
+
+
         #display all the element on screen
         util.displayAllImages(window, listHUD);
         util.displayAllImages(window, listPlayers);
         util.displayAllImages(window, listSorts);
         util.displayAllImages(window, listDecors);
+        util.displayAllImages(window, listEnnemis[0]);
 
         pygame.display.flip();

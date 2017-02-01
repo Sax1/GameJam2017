@@ -19,6 +19,7 @@ import menu;
 import sprite;
 import character;
 import player;
+import mobs;
 import factory;
 import levels;
 
@@ -43,7 +44,12 @@ ascendDecrement = 0.2;
 
 #Creation des joueurs
 listPlayers = [];
-listPlayers.append(player.Player(50,50,'./sprite/Joueur1/MageAV-1.png',100,1,1,""));
+listPlayers.append(player.Player(50,50,'./sprite/Joueur1/MageAV-1.png', 100, 1," ",1,""));
+
+#Creation des ennemis
+listEnnemis = [];
+listMonstreSquelette = factory.listeskelet();
+listEnnemis.append(listMonstreSquelette);
 
 #Listes des elements
 posf = window.get_rect()
@@ -69,12 +75,12 @@ while 1:
         boutonRes = menu.menuprin(window,width,height)
         if(boutonRes==1):
             nbJoueur = 1;
-            game.launch(window, listHUD, listDecors, listPlayers, gravity, playerDeplacement, nbJoueur, ascendDecrement,listeboulefeu,height,width);
+            game.launch(window, listHUD, listDecors, listPlayers, listEnnemis, gravity, playerDeplacement, nbJoueur, ascendDecrement,listeboulefeu,height,width);
         elif(boutonRes==2):
             nbJoueur = 2;
             if(len(listPlayers) == 1):
-                listPlayers.append(player.Player(100,100,'./sprite/Joueur2/Mage2AV-1.png',100,1,2,""));
-            game.launch(window, listHUD, listDecors, listPlayers, gravity, playerDeplacement, nbJoueur, ascendDecrement,listeboulefeu,height,width);
+                listPlayers.append(player.Player(300,100,'./sprite/Joueur2/Mage2AV-1.png',100,1," ",2,""));
+            game.launch(window, listHUD, listDecors, listPlayers, listEnnemis, gravity, playerDeplacement, nbJoueur, ascendDecrement,listeboulefeu,height,width);
         elif(boutonRes==3):
             menu.menuop(window,width,height)
         elif(boutonRes==4):
@@ -84,4 +90,4 @@ while 1:
         elif(boutonRes==5):
             sys.exit()
     else:
-        game.launch(window, listHUD, listDecors, listPlayers, gravity, playerDeplacement, nbJoueur, ascendDecrement,listeboulefeu,height,width);
+        game.launch(window, listHUD, listDecors, listPlayers, listEnnemis, gravity, playerDeplacement, nbJoueur, ascendDecrement,listeboulefeu,height,width);
