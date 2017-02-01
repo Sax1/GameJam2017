@@ -46,7 +46,8 @@ listPlayers = [];
 listPlayers.append(player.Player(50,50,'./sprite/Joueur1/MageAV-1.png',100,1,1,""));
 
 #Listes des elements
-tabPathBDF = ['',]
+tabPathBDF = ['./sprite/attaques+mobs/BouledeFeu/bouledefeuD.png','./sprite/attaques+mobs/BouledeFeu/bouledefeuBD.png','./sprite/attaques+mobs/BouledeFeu/bouledefeuB.png','./sprite/attaques+mobs/BouledeFeu/bouledefeuBG.png','./sprite/attaques+mobs/BouledeFeu/bouledefeuG.png','./sprite/attaques+mobs/BouledeFeu/bouledefeuHG.png','./sprite/attaques+mobs/BouledeFeu/bouledefeuH.png','./sprite/attaques+mobs/BouledeFeu/bouledefeuHD.png']
+tabPathPDG
 tabImgPath = []
 
 posf = window.get_rect()
