@@ -6,7 +6,7 @@ import util;
 import magic;
 import projectile;
 
-def launch(window, listHUD, listDecors, listPlayers, gravity, playerDeplacement, nbJoueur, ascendDecrement,listSorts,height,width):
+def launch(window,listBG, listHUD, listDecors, listPlayers, gravity, playerDeplacement, nbJoueur, ascendDecrement,listSorts,height,width):
     while 1:
         for event in pygame.event.get():
             listPlayers[0].set_image("./sprite/Joueur1/MageAV-1.png");
@@ -32,10 +32,11 @@ def launch(window, listHUD, listDecors, listPlayers, gravity, playerDeplacement,
             break;
 
         #display all the element on screen
-        util.displayAllImages(window, listHUD);
+        util.displayAllImages(window, listBG);
         util.displayAllImages(window, listPlayers);
         for listElem in listSorts:
             util.displayAllImages(window, listElem);
         util.displayAllImages(window, listDecors);
+        util.displayAllImages(window, listHUD);
 
         pygame.display.flip();

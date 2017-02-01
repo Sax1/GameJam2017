@@ -25,7 +25,7 @@ import levels;
 
 #init pygame
 pygame.init();
-pygame.key.set_repeat(20,20);
+pygame.key.set_repeat(200,20);
 
 
 #Creation de la fenetre a la de l'ecran
@@ -48,19 +48,24 @@ listPlayers.append(player.Player(50,50,'./sprite/Joueur1/MageAV-1.png',100,1,1,"
 #Listes des elements
 tabPathBDF = ['./sprite/attaques+mobs/BouledeFeu/bouledefeuD.png','./sprite/attaques+mobs/BouledeFeu/bouledefeuBD.png','./sprite/attaques+mobs/BouledeFeu/bouledefeuB.png','./sprite/attaques+mobs/BouledeFeu/bouledefeuBG.png','./sprite/attaques+mobs/BouledeFeu/bouledefeuG.png','./sprite/attaques+mobs/BouledeFeu/bouledefeuHG.png','./sprite/attaques+mobs/BouledeFeu/bouledefeuH.png','./sprite/attaques+mobs/BouledeFeu/bouledefeuHD.png']
 tabPathPDG = ['./sprite/attaques+mobs/PicDeGlace/picGlaceD.png','./sprite/attaques+mobs/PicDeGlace/picGlaceBD.png','./sprite/attaques+mobs/PicDeGlace/picGlaceB.png','./sprite/attaques+mobs/PicDeGlace/picGlaceBG.png','./sprite/attaques+mobs/PicDeGlace/picGlaceG.png','./sprite/attaques+mobs/PicDeGlace/picGlaceHG.png','./sprite/attaques+mobs/PicDeGlace/picGlaceH.png','./sprite/attaques+mobs/PicDeGlace/picGlaceHD.png']
-tabPathV = ['./sprite/Joueur1/MageAV-1.png','']
+tabPathV = ['./sprite/attaques+mobs/Tornade/Tornade-1.png','./sprite/attaques+mobs/Tornade/Tornade-1.png','./sprite/attaques+mobs/Tornade/Tornade-1.png','./sprite/attaques+mobs/Tornade/Tornade-1.png','./sprite/attaques+mobs/Tornade/Tornade-1.png','./sprite/attaques+mobs/Tornade/Tornade-1.png','./sprite/attaques+mobs/Tornade/Tornade-1.png','./sprite/attaques+mobs/Tornade/Tornade-1.png']
 
 listeSort = [factory.listeboulefeu(tabPathBDF),factory.listePicGlace(tabPathPDG),factory.listeVent(tabPathV)]
 
 posf = window.get_rect()
-sparte = sprite.Sprite(0,0,'./data/menubackgroundCastle.png')
-img = sparte.get_img().convert()
+BG = sprite.Sprite(0,0,'./data/menubackgroundCastle.png')
+img = BG.get_img()
 img = pygame.transform.scale(img, (posf.right, posf.bottom))
-sparte.set_image2(img)
+BG.set_image2(img)
+
+
+
+listBG = [];
+listBG.append(BG);
 listHUD = [];
-listHUD.append(sparte);
+listHUD.append(util.setHUD(window, './data/HUD/HUD1Joueur.png'));
 listDecors = [];
-listDecors.append(sprite.Sprite(0,0,'./data/Sol-1.png'));
+listDecors.append(sprite.Sprite(0,-20,'./data/Sol-1.png'));
 listDecors.append(sprite.Sprite(0,height-20,'./data/Sol-1.png'));
 listDecors.append(sprite.Sprite(0,500,'./data/SolR1-1.png'));
 listDecors.append(sprite.Sprite(0,0,'./data/Mur1-1.png'));
@@ -75,12 +80,14 @@ while 1:
         boutonRes = menu.menuprin(window,width,height)
         if(boutonRes==1):
             nbJoueur = 1;
-            game.launch(window, listHUD, listDecors, listPlayers, gravity, playerDeplacement, nbJoueur, ascendDecrement,listeSort,height,width);
+            listHUD.append(util.setHUD(window, './data/HUD/HUD1Joueur.png'));
+            game.launch(window,listBG, listHUD, listDecors, listPlayers, gravity, playerDeplacement, nbJoueur, ascendDecrement,listeSort,height,width);
         elif(boutonRes==2):
             nbJoueur = 2;
+            listHUD.append(util.setHUD(window, './data/HUD/HUD2Joueur.png'));
             if(len(listPlayers) == 1):
                 listPlayers.append(player.Player(100,100,'./sprite/Joueur2/Mage2AV-1.png',100,1,2,""));
-            game.launch(window, listHUD, listDecors, listPlayers, gravity, playerDeplacement, nbJoueur, ascendDecrement,listeSort,height,width);
+            game.launch(window,listBG, listHUD, listDecors, listPlayers, gravity, playerDeplacement, nbJoueur, ascendDecrement,listeSort,height,width);
         elif(boutonRes==3):
             menu.menuop(window,width,height)
         elif(boutonRes==4):
@@ -90,4 +97,5 @@ while 1:
         elif(boutonRes==5):
             sys.exit()
     else:
-        game.launch(window, listHUD, listDecors, listPlayers, gravity, playerDeplacement, nbJoueur, ascendDecrement,listeSort,height,width);
+        listHUD.append(util.setHUD(window, './data/HUD/HUD1Joueur.png'));
+        game.launch(window,listBG, listHUD, listDecors, listPlayers, gravity, playerDeplacement, nbJoueur, ascendDecrement,listeSort,height,width);
