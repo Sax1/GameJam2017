@@ -19,8 +19,8 @@ def seekAndDestroy(listEntity, listSorts):
 def isOutside(listSorts,height,width):
     for sort in listSorts:
         posSort =  sort.get_pos();
-        #if(posSort[0] <= 0 or posSort >= width or posSort[1] <= 0 or posSort[1] >= height):
-        #    sort.reinitProjectile();
+        if(posSort[0] <= 0 or posSort[0] >= width or posSort[1] <= 0 or posSort[1] >= height):
+            sort.reinitProjectile();
 
 def applyDeplacement(listSorts):
     for sort in listSorts:
@@ -41,4 +41,4 @@ def applyHurting(entity, sort):
     centerSort = (sort.get_pos()[0]+sort.get_img().get_width()/2,sort.get_pos()[1]+sort.get_img().get_height()/2);
     if(centerSort[0] > entity.get_pos()[0] and centerSort[0] < entity.get_pos()[0]+entity.get_img().get_width() and centerSort[1] > entity.get_pos()[1] and centerSort[1] < entity.get_pos()[1]+entity.get_img().get_height()):
         entity.setDamage(sort.getDamage());
-        #sort.reinitProjectile();
+        sort.reinitProjectile();

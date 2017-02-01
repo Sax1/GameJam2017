@@ -35,7 +35,7 @@ width = widowResolution.current_w;
 window  = pygame.display.set_mode((widowResolution.current_w,widowResolution.current_h), FULLSCREEN);
 
 #Variables Globales
-gameState = 2;
+gameState = 1;
 nbJoueur = 1;
 gravity = 10;
 playerDeplacement = 8;
