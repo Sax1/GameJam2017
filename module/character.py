@@ -42,7 +42,6 @@ class Character(sprite.Sprite):
             return 1;
         else:
             return 0;
-
     def getAscend(self):
         return self.ascend;
     def setAscendValue(self, value):

@@ -3,6 +3,7 @@ import pygame
 from pygame.locals import *;
 import physic;
 import magic;
+import sprite
 
 #To load an image with a given path
 def load_image(name):
@@ -19,6 +20,15 @@ def actionForKeyInput(keys, listPlayers, playerDeplacement, nbJoueur, listDecors
     if(nbJoueur == 2):
         touchJ2(keys,listPlayers[1],listDecors, playerDeplacement, listSorts)
 
+def lauchboulecourant(player, playerDeplacement, listSorts,direction):
+    if (player.sortCourant == 0):
+        magic.launchBoule(playerDeplacement,listSorts[0], player,direction)
+    elif(player.sortCourant == 1):
+        magic.launchBoule(playerDeplacement,listSorts[1], player,direction)
+    elif(player.sortCourant == 2):
+        magic.launchBoule(playerDeplacement,listSorts[2], player,direction)
+
+
 def touchJ1(keys, player, listDecors, playerDeplacement, listSorts):
     if(keys[122]):
         if(player.getJump() == 0 and player.getLanded() == 1):
@@ -26,40 +36,34 @@ def touchJ1(keys, player, listDecors, playerDeplacement, listSorts):
             player.setAscend(1);
             player.setAscendValue(10);
             player.setDeplacement(0,-player.getAscendValue());
-    if(keys[115]):
-        print '1bas';
-        #sys.exit();
     if( keys[113]):
         if(physic.isTouching('left',player,listDecors) == 0):
             player.setDeplacement(-playerDeplacement,0)
             player.set_image("./sprite/Joueur1/MageGA-1.png")
-    if( keys[100]):
+    elif( keys[100]):
         if(physic.isTouching('right',player,listDecors) == 0):
             player.setDeplacement(playerDeplacement,0)
             player.set_image("./sprite/Joueur1/MageDR-1.png")
-    if(keys[106] and keys[121]):
-        print("haut droit")
-        magic.launchBoule((1,-1),listSorts, player)
+    if(keys[101]):
+        player.changeSort(1)
+    elif(keys[97]):
+        player.changeSort(-1)
+    elif(keys[106] and keys[121]):
+        lauchboulecourant(player,(1,-1),listSorts,7)
     elif(keys[106] and keys[104]):
-        print("bas droit")
-        magic.launchBoule((1,1),listSorts, player)
+        lauchboulecourant(player,(1,1),listSorts,1)
     elif(keys[106]):#droite
-        magic.launchBoule((1,0),listSorts, player)
+        lauchboulecourant(player,(1,0),listSorts,0)
     elif(keys[103] and keys[104]):
-        print("bas gauche")
-        magic.launchBoule((-1,1),listSorts, player)
+        lauchboulecourant(player,(-1,1),listSorts,3)
     elif(keys[103] and keys[121]):
-        print("haut gauche")
-        magic.launchBoule((-1,-1),listSorts, player)
+        lauchboulecourant(player,(-1,-1),listSorts,5)
     elif(keys[103]):#gauche
-        print("gauche")
-        magic.launchBoule((-1,0),listSorts, player)
+        lauchboulecourant(player,(-1,0),listSorts,4)
     elif(keys[104]):#bas
-        print("bas")
-        magic.launchBoule((0,1),listSorts, player)
+        lauchboulecourant(player,(0,1),listSorts,2)
     elif(keys[121]):#haut
-        print("haut")
-        magic.launchBoule((0,-1),listSorts, player)
+        lauchboulecourant(player,(0,-1),listSorts,6)
 
 def touchJ2(keys, player, listDecors, playerDeplacement, listSorts):
     if(keys[K_UP]):
@@ -68,36 +72,39 @@ def touchJ2(keys, player, listDecors, playerDeplacement, listSorts):
             player.setAscend(1);
             player.setAscendValue(10);
             player.setDeplacement(0,-player.getAscendValue());
-    if(keys[K_DOWN]):
-        print '2bas';
     if(keys[K_LEFT]):
         if(physic.isTouching('left',player,listDecors) == 0):
             player.setDeplacement(-playerDeplacement,0)
             player.set_image("./sprite/Joueur2/Mage2GA-1.png")
-    if(keys[K_RIGHT]):
+    elif(keys[K_RIGHT]):
         if(physic.isTouching('right',player,listDecors) == 0):
             player.setDeplacement(playerDeplacement,0)
             player.set_image("./sprite/Joueur2/Mage2DR-1.png")
-    if(keys[51] and keys[53]):
-        print("haut droit")
-        magic.launchBoule((1,-1),listSorts, player)
+    if(keys[54]):
+        player.changeSort(1)
+    elif(keys[52]):
+        player.changeSort(-1)
+    elif(keys[51] and keys[53]):
+        lauchboulecourant(player,(1,-1),listSorts,7)
     elif(keys[50] and keys[51]):
-        print("bas droit")
-        magic.launchBoule((1,1),listSorts, player)
+        lauchboulecourant(player,(1,1),listSorts,1)
     elif(keys[51]):#droite
-        magic.launchBoule((1,0),listSorts, player)
+        lauchboulecourant(player,(1,0),listSorts,0)
     elif(keys[49] and keys[50]):
-        print("bas gauche")
-        magic.launchBoule((-1,1),listSorts, player)
+        lauchboulecourant(player,(-1,1),listSorts,3)
     elif(keys[49] and keys[53]):
-        print("haut gauche")
-        magic.launchBoule((-1,-1),listSorts, player)
+        lauchboulecourant(player,(-1,-1),listSorts,5)
     elif(keys[49]):#gauche
-        print("gauche")
-        magic.launchBoule((-1,0),listSorts, player)
+        lauchboulecourant(player,(-1,0),listSorts,4)
     elif(keys[50]):#bas
-        print("bas")
-        magic.launchBoule((0,1),listSorts, player)
+        lauchboulecourant(player,(0,1),listSorts,2)
     elif(keys[53]):#haut
-        print("haut")
-        magic.launchBoule((0,-1),listSorts, player)
+        lauchboulecourant(player,(0,-1),listSorts,6)
+
+def setHUD(window, path):
+    posf = window.get_rect();
+    HUD = sprite.Sprite(0,0,path);
+    img = HUD.get_img()
+    img = pygame.transform.scale(img, (posf.right, HUD.get_img().get_height()));
+    HUD.set_image2(img);
+    return HUD;

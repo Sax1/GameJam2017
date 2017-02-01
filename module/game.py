@@ -7,7 +7,9 @@ import magic;
 import projectile;
 import mobs
 
-def launch(window, listHUD, listDecors, listPlayers, listEnnemis, gravity, playerDeplacement, nbJoueur, ascendDecrement,listSorts,height,width):
+
+def launch(window,listBG, listHUD, listDecors, listPlayers, listEnnemis, gravity, playerDeplacement, nbJoueur, ascendDecrement,listSorts,height,width):
+
     while 1:
         for event in pygame.event.get():
             listPlayers[0].set_image("./sprite/Joueur1/MageAV-1.png");
@@ -21,11 +23,10 @@ def launch(window, listHUD, listDecors, listPlayers, listEnnemis, gravity, playe
                     util.actionForKeyInput(keys,listPlayers, playerDeplacement, nbJoueur, listDecors, listSorts);
 
         for player in listPlayers:
-            if(not player.isDead()):
-                physic.applyGravity(player, gravity);
-                physic.applyCollisionWithFloor(player, listDecors);
-                physic.applyJump(player, ascendDecrement);
-                physic.jumpCollide(player, listDecors);
+            physic.applyGravity(player, gravity);
+            physic.applyCollisionWithFloor(player, listDecors);
+            physic.applyJump(player, ascendDecrement);
+            physic.jumpCollide(player, listDecors);
         magic.applySort(listSorts,listPlayers,height,width)
 
 
@@ -54,11 +55,20 @@ def launch(window, listHUD, listDecors, listPlayers, listEnnemis, gravity, playe
         magic.applySort(listSorts,listEnnemis[0],height,width)
 
 
+        if(listPlayers[0].isDead()):
+            break;
+        elif(nbJoueur == 2 and listPlayers[1].isDead()):
+            break;
+
+
         #display all the element on screen
-        util.displayAllImages(window, listHUD);
+        util.displayAllImages(window, listBG);
         util.displayAllImages(window, listPlayers);
-        util.displayAllImages(window, listSorts);
+        for listElem in listSorts:
+            util.displayAllImages(window, listElem);
         util.displayAllImages(window, listDecors);
         util.displayAllImages(window, listEnnemis[0]);
+        util.displayAllImages(window, listHUD);
+
 
         pygame.display.flip();
