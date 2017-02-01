@@ -28,3 +28,5 @@ class Projectile(sprite.Sprite):
         return self.speed
     def setPresent(self, val):
         self.present = val;
+    def getimgTab(self):
+        return self.imgTab

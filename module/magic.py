@@ -27,11 +27,12 @@ def applyDeplacement(listSorts):
     for sort in listSorts:
         sort.applyDeplacementP();
 
-def launchBoule(dep,listSorts, j):
+def launchBoule(dep,listSorts, j,direction):
     i = 0;
     b = 0;
     while(i < len(listSorts) and b == 0):
         if(listSorts[i].present == 0):
+            listSorts[i].set_image(listSorts[i].getimgTab()[direction])
             listSorts[i].set_pos((j.get_pos()[0]+j.get_img().get_width()+10),j.get_pos()[1])
             listSorts[i].setDeplacementP(dep[0]*listSorts[i].getSpeed(),dep[1]*listSorts[i].getSpeed())
             listSorts[i].setPresent(1)

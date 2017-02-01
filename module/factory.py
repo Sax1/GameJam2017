@@ -9,7 +9,7 @@ def listeboulefeu(imgTab):
     print imgTab[0];
     listboulefeu = [];
     for i in range(0,20):
-        listboulefeu.append(projectile.Projectile(-100,-100,imgTab[0],15,(0,0),-10,0,imgTab))
+        listboulefeu.append(projectile.Projectile(-100,-100,imgTab[0],20,(0,0),-10,0,imgTab))
     return listboulefeu
 
 def listePicGlace(imgTab):

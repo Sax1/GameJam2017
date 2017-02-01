@@ -19,6 +19,15 @@ def actionForKeyInput(keys, listPlayers, playerDeplacement, nbJoueur, listDecors
     if(nbJoueur == 2):
         touchJ2(keys,listPlayers[1],listDecors, playerDeplacement, listSorts)
 
+def lauchboulecourant(player, playerDeplacement, listSorts,direction):
+    if (player.sortCourant == 0):
+        magic.launchBoule(playerDeplacement,listSorts[0], player,direction)
+    elif(player.sortCourant == 1):
+        magic.launchBoule(playerDeplacement,listSorts[1], player,direction)
+    elif(player.sortCourant == 2):
+        magic.launchBoule(playerDeplacement,listSorts[2], player,direction)
+
+
 def touchJ1(keys, player, listDecors, playerDeplacement, listSorts):
     if(keys[101]):
         player.changeSort(1)
@@ -43,27 +52,27 @@ def touchJ1(keys, player, listDecors, playerDeplacement, listSorts):
             player.set_image("./sprite/Joueur1/MageDR-1.png")
     if(keys[106] and keys[121]):
         print("haut droit")
-        lauchboulecourant(player,(1,-1),listSorts)
+        lauchboulecourant(player,(1,-1),listSorts,7)
     elif(keys[106] and keys[104]):
         print("bas droit")
-        lauchboulecourant(player,(1,1),listSorts)
+        lauchboulecourant(player,(1,1),listSorts,1)
     elif(keys[106]):#droite
-        lauchboulecourant(player,(1,0),listSorts)
+        lauchboulecourant(player,(1,0),listSorts,0)
     elif(keys[103] and keys[104]):
         print("bas gauche")
-        lauchboulecourant(player,(-1,1),listSorts)
+        lauchboulecourant(player,(-1,1),listSorts,3)
     elif(keys[103] and keys[121]):
         print("haut gauche")
-        lauchboulecourant(player,(-1,-1),listSorts)
+        lauchboulecourant(player,(-1,-1),listSorts,5)
     elif(keys[103]):#gauche
         print("gauche")
-        lauchboulecourant(player,(-1,0),listSorts)
+        lauchboulecourant(player,(-1,0),listSorts,4)
     elif(keys[104]):#bas
         print("bas")
-        lauchboulecourant(player,(0,1),listSorts)
+        lauchboulecourant(player,(0,1),listSorts,2)
     elif(keys[121]):#haut
         print("haut")
-        lauchboulecourant(player,(0,-1),listSorts)
+        lauchboulecourant(player,(0,-1),listSorts,6)
 
 def touchJ2(keys, player, listDecors, playerDeplacement, listSorts):
     if(keys[54]):
@@ -88,32 +97,24 @@ def touchJ2(keys, player, listDecors, playerDeplacement, listSorts):
             player.set_image("./sprite/Joueur2/Mage2DR-1.png")
     if(keys[51] and keys[53]):
         print("haut droit")
-        lauchboulecourant(player,(1,-1),listSorts)
+        lauchboulecourant(player,(1,-1),listSorts,7)
     elif(keys[50] and keys[51]):
         print("bas droit")
-        lauchboulecourant(player,(1,1),listSorts)
+        lauchboulecourant(player,(1,1),listSorts,1)
     elif(keys[51]):#droite
-        lauchboulecourant(player,(1,0),listSorts)
+        lauchboulecourant(player,(1,0),listSorts,0)
     elif(keys[49] and keys[50]):
         print("bas gauche")
-        lauchboulecourant(player,(-1,1),listSorts)
+        lauchboulecourant(player,(-1,1),listSorts,3)
     elif(keys[49] and keys[53]):
         print("haut gauche")
-        lauchboulecourant(player,(-1,-1),listSorts)
+        lauchboulecourant(player,(-1,-1),listSorts,5)
     elif(keys[49]):#gauche
         print("gauche")
-        lauchboulecourant(player,(-1,0),listSorts)
+        lauchboulecourant(player,(-1,0),listSorts,4)
     elif(keys[50]):#bas
         print("bas")
-        lauchboulecourant(player,(0,1),listSorts)
+        lauchboulecourant(player,(0,1),listSorts,2)
     elif(keys[53]):#haut
         print("haut")
-        lauchboulecourant(player,(0,-1),listSorts)
-
-    def lauchboulecourant(player, playerDeplacement, listSorts,direction):
-        if (player.sortCourant == 0):
-            magic.launchBoule(playerDeplacement,listSorts[0], player,direction)
-        elif(player.sortCourant == 1):
-            magic.launchBoule(playerDeplacement,listSorts[1], player,direction)
-        elif(player.sortCourant == 2):
-            magic.launchBoule(playerDeplacement,listSorts[2], player,direction)
+        lauchboulecourant(player,(0,-1),listSorts,6)

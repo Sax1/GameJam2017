@@ -20,17 +20,22 @@ def launch(window, listHUD, listDecors, listPlayers, gravity, playerDeplacement,
                     util.actionForKeyInput(keys,listPlayers, playerDeplacement, nbJoueur, listDecors, listSorts);
 
         for player in listPlayers:
-            if(not player.isDead()):
-                physic.applyGravity(player, gravity);
-                physic.applyCollisionWithFloor(player, listDecors);
-                physic.applyJump(player, ascendDecrement);
-                physic.jumpCollide(player, listDecors);
+            physic.applyGravity(player, gravity);
+            physic.applyCollisionWithFloor(player, listDecors);
+            physic.applyJump(player, ascendDecrement);
+            physic.jumpCollide(player, listDecors);
         magic.applySort(listSorts,listPlayers,height,width)
+
+        if(listPlayers[0].isDead()):
+            break;
+        elif(nbJoueur == 2 and listPlayers[1].isDead()):
+            break;
 
         #display all the element on screen
         util.displayAllImages(window, listHUD);
         util.displayAllImages(window, listPlayers);
-        util.displayAllImages(window, listSorts);
+        for listElem in listSorts:
+            util.displayAllImages(window, listElem);
         util.displayAllImages(window, listDecors);
 
         pygame.display.flip();
