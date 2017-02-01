@@ -19,7 +19,7 @@ def isTouching(dir,j,listDecors):
         if(dir == 'top'):
             if(isIn(pointPlayerTopMid,elem)):
                 return 1;
-        elif(dir == 'rigth'):
+        elif(dir == 'right'):
             if(isIn(pointPlayerTopRigth,elem) or isIn(pointPlayerRigthMid,elem)):
                 return 1;
         elif(dir == 'left'):
