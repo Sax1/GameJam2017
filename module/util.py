@@ -3,6 +3,7 @@ import pygame
 from pygame.locals import *;
 import physic;
 import magic;
+import pygame.mixer
 
 #To load an image with a given path
 def load_image(name):
@@ -54,6 +55,8 @@ def touchJ1(keys, player, listDecors, playerDeplacement, listSorts):
     elif(keys[103]):#gauche
         print("gauche")
         magic.launchBoule((-1,0),listSorts, player)
+        pygame.mixer.music.load("./data/Sons/BouleEnergie.mp3");
+        pygame.mixer.music.play();
     elif(keys[104]):#bas
         print("bas")
         magic.launchBoule((0,1),listSorts, player)
