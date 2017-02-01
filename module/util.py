@@ -36,6 +36,7 @@ def touchJ1(keys, player, listDecors, playerDeplacement, listSorts):
     if( keys[100]):
         if(physic.isTouching('right',player,listDecors) == 0):
             player.setDeplacement(playerDeplacement,0)
+            player.set_image("./sprite/Joueur1/MageDR-1.png")
     if(keys[106] and keys[121]):
         print("haut droit")
         magic.launchBoule((1,-1),listSorts, player)
