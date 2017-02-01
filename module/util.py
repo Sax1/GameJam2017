@@ -20,6 +20,10 @@ def actionForKeyInput(keys, listPlayers, playerDeplacement, nbJoueur, listDecors
         touchJ2(keys,listPlayers[1],listDecors, playerDeplacement, listSorts)
 
 def touchJ1(keys, player, listDecors, playerDeplacement, listSorts):
+    if(keys[101]):
+        player.changeSort(1)
+    if(keys[97]):
+        player.changeSort(-1)
     if(keys[122]):
         if(player.getJump() == 0 and player.getLanded() == 1):
             player.setJump(1);
@@ -62,6 +66,10 @@ def touchJ1(keys, player, listDecors, playerDeplacement, listSorts):
         magic.launchBoule((0,-1),listSorts, player)
 
 def touchJ2(keys, player, listDecors, playerDeplacement, listSorts):
+    if(keys[54]):
+        player.changeSort(1)
+    if(keys[52]):
+        player.changeSort(-1)
     if(keys[K_UP]):
         if(player.getJump() == 0 and player.getLanded() == 1):
             player.setJump(1);

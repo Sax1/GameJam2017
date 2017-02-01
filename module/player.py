@@ -10,6 +10,7 @@ class Player(character.Character):
         self.ascendValue = 0;
         self.landed = 0;
         self.sorts = listSorts;
+        self.sortCourant = 0;
 
     def setJump(self,state):
         self.jump = state;
@@ -34,3 +35,11 @@ class Player(character.Character):
         self.ascendValue = value;
     def getAscendValue(self):
         return self.ascendValue;
+    def changeSort(self,val):
+        if (val == 1):
+            self.sortCourant = (self.sortCourant+val)%3
+        elif (val == -1):
+            if(self.sortCourant == 0):
+                self.sortCourant = 2
+            else
+                self.sortCourant = self.sortCourant+val

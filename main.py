@@ -46,6 +46,9 @@ listPlayers = [];
 listPlayers.append(player.Player(50,50,'./sprite/Joueur1/MageAV-1.png',100,1,1,""));
 
 #Listes des elements
+tabPathBDF = ['',]
+tabImgPath = []
+
 posf = window.get_rect()
 sparte = sprite.Sprite(0,0,'./data/menubackgroundCastle.png')
 img = sparte.get_img().convert()
