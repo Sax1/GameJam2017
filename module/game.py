@@ -20,10 +20,11 @@ def launch(window, listHUD, listDecors, listPlayers, gravity, playerDeplacement,
                     util.actionForKeyInput(keys,listPlayers, playerDeplacement, nbJoueur, listDecors, listSorts);
 
         for player in listPlayers:
-            physic.applyGravity(player, gravity);
-            physic.applyCollisionWithFloor(player, listDecors);
-            physic.applyJump(player, ascendDecrement);
-            physic.jumpCollide(player, listDecors);
+            if(not player.isDead()):
+                physic.applyGravity(player, gravity);
+                physic.applyCollisionWithFloor(player, listDecors);
+                physic.applyJump(player, ascendDecrement);
+                physic.jumpCollide(player, listDecors);
         magic.applySort(listSorts,listPlayers,height,width)
 
         #display all the element on screen

@@ -39,7 +39,7 @@ gameState = 1;
 nbJoueur = 1;
 gravity = 10;
 playerDeplacement = 8;
-ascendDecrement = 0.5;
+ascendDecrement = 0.2;
 
 #Creation des joueurs
 listPlayers = [];
