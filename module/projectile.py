@@ -4,13 +4,14 @@ import sprite;
 
 class Projectile(sprite.Sprite):
     """docstring for ."""
-    def __init__(self,pos_x, pos_y, path,speed,deplacement,degat,present,imgTab):
+    def __init__(self,pos_x, pos_y, path,speed,deplacement,degat,present,imgTab,typep):
         sprite.Sprite.__init__(self, pos_x, pos_y, path)
         self.imgTab = imgTab
         self.degat = degat
         self.speed = speed
         self.deplacement = deplacement
         self.present = 0
+        self.typep = typep
     def setDeplacementP(self,x,y):
         self.deplacement = (x,y)
     def applyDeplacementP(self):
@@ -30,3 +31,5 @@ class Projectile(sprite.Sprite):
         self.present = val;
     def getimgTab(self):
         return self.imgTab
+    def getTypep(self):
+        return self.typep
