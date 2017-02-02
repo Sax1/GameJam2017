@@ -33,9 +33,9 @@ def menuprin(window,width,height):
 
     # Affichage deun Nomjeu au centre de la fenetre
     basicfont = pygame.font.SysFont("Winks", 48)
-    text = basicfont.render('Nomjeu', True, (0,0,0))
+    text = basicfont.render('Mago et le Pognon Magique', True, (0,0,0))
     textrect = text.get_rect()
-    textrect.x = width*6/16
+    textrect.x = width*5.5/16
     textrect.y = height/6
     window.blit(text, textrect)
     pygame.display.flip()
