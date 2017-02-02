@@ -9,13 +9,16 @@ import mobs;
 import levels;
 
 
-def launch(window,listBG, listHUD, listDecors, listPlayers, listEnnemis, gravity, playerDeplacement, nbJoueur, ascendDecrement,listSorts,height,width,listCombo):
+def launch(window,listBG, listHUD, listDecors, listPlayers, listEnnemis, gravity, playerDeplacement, nbJoueur, ascendDecrement,listSorts,height,width,listCombo,lap):
     levels.loadLevel(1,listDecors);
     while 1:
         for event in pygame.event.get():
             listPlayers[0].set_image("./sprite/Joueur1/MageAV-1.png");
             if (nbJoueur ==2):
-                    listPlayers[1].set_image("./sprite/Joueur2/Mage2AV-1.png");
+                lap = lap+1;
+                listPlayers[1].set_image("./sprite/Joueur2/Mage2AV-1.png");
+            elif (lap != 0 and nbJoueur !=2):
+                listPlayers[1].set_pos(-3000,0);
             keys = pygame.key.get_pressed();
             if event.type == QUIT:
                 sys.exit()
@@ -41,20 +44,23 @@ def launch(window,listBG, listHUD, listDecors, listPlayers, listEnnemis, gravity
                 physic.applyJump(squelette, ascendDecrement);
                 physic.jumpCollide(squelette, listDecors);
                 if(len(listPlayers) == 2):
-                    if ( (abs(squelette.pos_x-listPlayers[0].pos_x)) < (abs(squelette.pos_x-listPlayers[1].pos_x)) ):
+                    if ( (abs(squelette.pos_x-listPlayers[0].pos_x)+23) < (abs(squelette.pos_x-listPlayers[1].pos_x)+43) ):
                         jCible = listPlayers[0];
                     else:
                         jCible = listPlayers[1];
-                    if (squelette.pos_x < jCible.pos_x):
+                    if (squelette.pos_x+23 < jCible.pos_x+43):
                         squelette.setDeplacement(6,0);
-                    elif (squelette.pos_x > jCible.pos_x):
+                    elif (squelette.pos_x+23 > jCible.pos_x+43):
                         squelette.setDeplacement(-6,0);
                 else:
                     jCible = listPlayers[0];
-                    if (squelette.pos_x < jCible.pos_x):
+                    if (squelette.pos_x+23 < jCible.pos_x+43):
                         squelette.setDeplacement(6,0);
-                    elif (squelette.pos_x > jCible.pos_x):
+                    elif (squelette.pos_x+23 > jCible.pos_x+43):
                         squelette.setDeplacement(-6,0);
+                magic.contactHurting(jCible, squelette)
+        magic.applySort(listSorts,listEnnemis[0],height,width,listCombo)
+
 
         magic.applySort(listSorts,listEnnemis[0],height,width,listCombo)
         for e in pygame.event.get():
@@ -71,20 +77,21 @@ def launch(window,listBG, listHUD, listDecors, listPlayers, listEnnemis, gravity
                 physic.applyJump(squelette, ascendDecrement);
                 physic.jumpCollide(squelette, listDecors);
                 if(len(listPlayers) == 2):
-                    if ( (abs(squelette.pos_x-listPlayers[0].pos_x)) < (abs(squelette.pos_x-listPlayers[1].pos_x)) ):
+                    if ( (abs(squelette.pos_x-listPlayers[0].pos_x)+23) < (abs(squelette.pos_x-listPlayers[1].pos_x)+43) ):
                         jCible = listPlayers[0];
                     else:
                         jCible = listPlayers[1];
-                    if (squelette.pos_x < jCible.pos_x):
+                    if (squelette.pos_x+23 < jCible.pos_x+43):
                         squelette.setDeplacement(6,0);
-                    elif (squelette.pos_x > jCible.pos_x):
+                    elif (squelette.pos_x+23 > jCible.pos_x+43):
                         squelette.setDeplacement(-6,0);
                 else:
                     jCible = listPlayers[0];
-                    if (squelette.pos_x < jCible.pos_x):
+                    if (squelette.pos_x+23 < jCible.pos_x+43):
                         squelette.setDeplacement(6,0);
-                    elif (squelette.pos_x > jCible.pos_x):
+                    elif (squelette.pos_x+23 > jCible.pos_x+43):
                         squelette.setDeplacement(-6,0);
+                magic.contactHurting(jCible, squelette)
         magic.applySort(listSorts,listEnnemis[1],height,width,listCombo)
 
 
@@ -95,20 +102,21 @@ def launch(window,listBG, listHUD, listDecors, listPlayers, listEnnemis, gravity
                 physic.applyJump(squelette, ascendDecrement);
                 physic.jumpCollide(squelette, listDecors);
                 if(len(listPlayers) == 2):
-                    if ( (abs(squelette.pos_x-listPlayers[0].pos_x)) < (abs(squelette.pos_x-listPlayers[1].pos_x)) ):
+                    if ( (abs(squelette.pos_x-listPlayers[0].pos_x)+23) < (abs(squelette.pos_x-listPlayers[1].pos_x)+43) ):
                         jCible = listPlayers[0];
                     else:
                         jCible = listPlayers[1];
-                    if (squelette.pos_x < jCible.pos_x):
+                    if (squelette.pos_x+23 < jCible.pos_x+43):
                         squelette.setDeplacement(6,0);
-                    elif (squelette.pos_x > jCible.pos_x):
+                    elif (squelette.pos_x+23 > jCible.pos_x+43):
                         squelette.setDeplacement(-6,0);
                 else:
                     jCible = listPlayers[0];
-                    if (squelette.pos_x < jCible.pos_x):
+                    if (squelette.pos_x+23 < jCible.pos_x+43):
                         squelette.setDeplacement(6,0);
-                    elif (squelette.pos_x > jCible.pos_x):
+                    elif (squelette.pos_x+23 > jCible.pos_x+43):
                         squelette.setDeplacement(-6,0);
+                magic.contactHurting(jCible, squelette)
         magic.applySort(listSorts,listEnnemis[2],height,width,listCombo)
 
 

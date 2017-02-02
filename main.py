@@ -43,10 +43,11 @@ nbJoueur = 1;
 gravity = 12;
 playerDeplacement = 8;
 ascendDecrement = 0.2;
+lap = 0;
 
 #Creation des joueurs
 listPlayers = [];
-listPlayers.append(player.Player(850,900,'./sprite/Joueur1/MageAV-1.png', 100, 1," ",1,""));
+listPlayers.append(player.Player(850,850,'./sprite/Joueur1/MageAV-1.png', 100, 2," ",1,""));
 
 #Creation des ennemis
 listEnnemis = [];
@@ -92,22 +93,69 @@ while 1:
         boutonRes = menu.menuprin(window,width,height)
         if(boutonRes==1):
             nbJoueur = 1;
+            listPlayers[0].setGravity(1);
+            listPlayers[0].set_pos(800,850);
+            listPlayers[0].set_hp(100);
+            listPlayers[0].setLife(1);
+            for monstre in ListSquelette1:
+                monstre.set_pos(100,50);
+                monstre.set_hp(40);
+                monstre.setLife =1;
+            for monstre in ListSquelette2:
+                monstre.set_pos(950,50);
+                monstre.set_hp(40);
+                monstre.setLife =1;
+            for monstre in ListSquelette3:
+                monstre.set_pos(1600,50);
+                monstre.set_hp(40);
+                monstre.setLife =1;
             listHUD.append(util.setHUD(window, './data/HUD/HUD1Joueur.png'));
-            game.launch(window,listBG, listHUD, listDecors, listPlayers,listEnnemis, gravity, playerDeplacement, nbJoueur, ascendDecrement,listeSort,height,width,listCombo);
+            game.launch(window,listBG, listHUD, listDecors, listPlayers,listEnnemis, gravity, playerDeplacement, nbJoueur, ascendDecrement,listeSort,height,width,listCombo,lap);
         elif(boutonRes==2):
             nbJoueur = 2;
+            listPlayers[0].setGravity(1);
+            listPlayers[0].set_pos(750,850);
+            listPlayers[0].set_hp(100);
+            listPlayers[0].setLife(1);
+            for monstre in ListSquelette1:
+                monstre.set_pos(100,50)
+                monstre.set_hp(40);
+                monstre.setLife =1;
+            for monstre in ListSquelette2:
+                monstre.set_pos(950,50)
+                monstre.set_hp(40);
+                monstre.setLife =1;
+            for monstre in ListSquelette3:
+                monstre.set_pos(1600,50)
+                monstre.set_hp(40);
+                monstre.setLife =1;
             listHUD.append(util.setHUD(window, './data/HUD/HUD2Joueur.png'));
             if(len(listPlayers) == 1):
-                listPlayers.append(player.Player(900,900,'./sprite/Joueur2/Mage2AV-1.png',100,1," ",2,""));
-            game.launch(window,listBG, listHUD, listDecors, listPlayers, listEnnemis, gravity, playerDeplacement, nbJoueur, ascendDecrement,listeSort,height,width,listCombo);
+                listPlayers.append(player.Player(900,900,'./sprite/Joueur2/Mage2AV-1.png',100,2," ",2,""));
+            listPlayers[1].setGravity(1);
+            listPlayers[1].set_pos(900,850);
+            listPlayers[1].set_hp(100);
+            listPlayers[1].setLife(1);
+            for monstre in ListSquelette1:
+                monstre.set_pos(100,50)
+                monstre.set_hp(40);
+                monstre.setLife =1;
+            for monstre in ListSquelette2:
+                monstre.set_pos(950,50)
+                monstre.set_hp(40);
+                monstre.setLife =1;
+            for monstre in ListSquelette3:
+                monstre.set_pos(1600,50)
+                monstre.set_hp(40);
+                monstre.setLife =1;
+            game.launch(window,listBG, listHUD, listDecors, listPlayers, listEnnemis, gravity, playerDeplacement, nbJoueur, ascendDecrement,listeSort,height,width,listCombo,lap);
         elif(boutonRes==3):
             menu.menuop(window,width,height)
         elif(boutonRes==4):
             #menu.menucred
             print "4";
-            factory.listeboulefeu()
         elif(boutonRes==5):
             sys.exit()
     else:
         listHUD.append(util.setHUD(window, './data/HUD/HUD1Joueur.png'));
-        game.launch(window,listBG, listHUD, listDecors, listPlayers, listEnnemis, gravity, playerDeplacement, nbJoueur, ascendDecrement,listeSort,height,width,listCombo);
+        game.launch(window,listBG, listHUD, listDecors, listPlayers, listEnnemis, gravity, playerDeplacement, nbJoueur, ascendDecrement,listeSort,height,width,listCombo,lap);

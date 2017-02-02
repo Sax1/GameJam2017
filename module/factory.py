@@ -6,8 +6,6 @@ import squelette
 
 
 def listeboulefeu(imgTab):
-    print imgTab;
-    print imgTab[0];
     listboulefeu = [];
     for i in range(0,20):
         listboulefeu.append(projectile.Projectile(-100,-100,imgTab[0],20,(0,0),-5,0,imgTab,"feu"))
@@ -27,12 +25,12 @@ def listeVent(imgTab):
 
 def listeskelet(x, y):
     listeskelet = [];
-    for i in range(0,5):
-        listeskelet.append(squelette.Squelette(x,y,'./sprite/Skeleton/skeletonDR-1.png', 30, 0.5, " ", 15))
+    for i in range(0,1):
+        listeskelet.append(squelette.Squelette(x,y,'./sprite/Skeleton/skeletonDR-1.png', 30, 0.7, " ", -1))
     return listeskelet
 
 def listexplo(imgTab):
     listexplo = []
-    for i in range(0,5):
+    for i in range(0,20):
         listexplo.append(projectile.Projectile(-100,-100,'./sprite/attaques+mobs/explosion/explosion-3.png',0,(0,0),-20,0,imgTab,"rien"))
     return listexplo

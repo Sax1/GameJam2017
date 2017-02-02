@@ -38,7 +38,7 @@ class Character(sprite.Sprite):
     def isDead(self):
         if(self.alive == 1 and self.hp <= 0):
             self.alive = 0;
-            self.set_pos(-500,-500);
+            self.set_pos(-3000,-500);
             return 1;
         else:
             return 0;
@@ -65,3 +65,7 @@ class Character(sprite.Sprite):
         self.statut = newStatut;
     def getStatut (self):
         return self.statut;
+    def setLife (self, newLife):
+        self.alive = newLife;
+    def getLife (self):
+        return self.alive;

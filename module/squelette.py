@@ -5,4 +5,11 @@ import mobs;
 class Squelette(mobs.Mobs):
     def __init__(self, pos_x, pos_y, imgPath, hp, speed, statut, damages):
         mobs.Mobs.__init__(self, pos_x, pos_y, imgPath, hp, speed, statut, damages)
-        self.damages = 15;
+
+
+    def getDamageMonster(self):
+        return self.damages;
+
+
+    def setDamageMonster(self, newDamage):
+        self.damages = newDamage;
