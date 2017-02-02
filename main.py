@@ -81,6 +81,7 @@ BG.set_image2(img)
 listBG = [];
 listBG.append(BG);
 listHUD = [];
+listHUDPV = [];
 listDecors = [];
 listDecors.append(sprite.Sprite(0,-20,'./data/Sol-1.png'));
 listDecors.append(sprite.Sprite(0,height-20,'./data/Sol-1.png'));
@@ -95,17 +96,17 @@ while 1:
         boutonRes = menu.menuprin(window,width,height)
         if(boutonRes==1):
             nbJoueur = 1;
-            listHUD.append(util.setHUDPV(window, './data/HUD/BarDeVie.png', listPlayers[0]))
+            listHUDPV.append(util.setHUDPV(window, listPlayers[0],1))
             listHUD.append(util.setHUD(window, './data/HUD/HUD1Joueur.png'));
-            game.launch(window,listBG, listHUD, listDecors, listPlayers,listEnnemis, gravity, playerDeplacement, nbJoueur, ascendDecrement,listeSort,height,width,listCombo,keysPressed);
+            game.launch(window,listBG, listHUD, listDecors, listPlayers,listEnnemis, gravity, playerDeplacement, nbJoueur, ascendDecrement,listeSort,height,width,listCombo,keysPressed,listHUDPV);
         elif(boutonRes==2):
             nbJoueur = 2;
             listHUD.append(util.setHUD(window, './data/HUD/HUD2Joueur.png'));
-            listHUD.append(util.setHUDPV(window, './data/HUD/BarDeVie.png', listPlayers[0]))
+            listHUDPV.append(util.setHUDPV(window, listPlayers[0],1))
             if(len(listPlayers) == 1):
                 listPlayers.append(player.Player(300,100,'./sprite/Joueur2/Mage2AV-1.png',100,1," ",2,""));
-            listHUD.append(util.setHUDPV(window, './data/HUD/BarDeVie.png', listPlayers[1]))
-            game.launch(window,listBG, listHUD, listDecors, listPlayers, listEnnemis, gravity, playerDeplacement, nbJoueur, ascendDecrement,listeSort,height,width,listCombo,keysPressed);
+            listHUDPV.append(util.setHUDPV(window, listPlayers[1],2))
+            game.launch(window,listBG, listHUD, listDecors, listPlayers, listEnnemis, gravity, playerDeplacement, nbJoueur, ascendDecrement,listeSort,height,width,listCombo,keysPressed,listHUDPV);
         elif(boutonRes==3):
             menu.menuop(window,width,height)
         elif(boutonRes==4):
@@ -114,5 +115,6 @@ while 1:
         elif(boutonRes==5):
             sys.exit()
     else:
+        listHUDPV.append(util.setHUDPV(window, listPlayers[0],1))
         listHUD.append(util.setHUD(window, './data/HUD/HUD1Joueur.png'));
-        game.launch(window,listBG, listHUD, listDecors, listPlayers, listEnnemis, gravity, playerDeplacement, nbJoueur, ascendDecrement,listeSort,height,width,listCombo,keysPressed);
+        game.launch(window,listBG, listHUD, listDecors, listPlayers, listEnnemis, gravity, playerDeplacement, nbJoueur, ascendDecrement,listeSort,height,width,listCombo,keysPressed,listHUDPV);

@@ -15,6 +15,10 @@ def displayAllImages(window, listElements):
     for elem in listElements:
         window.blit(elem.get_img(),elem.get_pos());
 
+def displayAllPv(window,listElements):
+    for elem in listElements:
+        window.blit(elem[0],elem[1]);
+
 def actionForKeyInput(keys, listPlayers, playerDeplacement, nbJoueur, listDecors, listSorts,keysPressed):
     touchJ1(keys,listPlayers[0],listDecors, playerDeplacement, listSorts,keysPressed)
     if(nbJoueur == 2):
@@ -113,9 +117,15 @@ def setHUD(window, pathhud):
     HUD.set_image2(img);
     return HUD;
 
-def setHUDPV(window, pathpv, player):
-    PV = sprite.Sprite(800,800,pathpv) #window.get_width()/2+(player.get_hp()/170*100),window.get_height()/2
-    imgpv = PV.get_img()
-    imgpv = pygame.transform.scale(imgpv, (170/1680*window.get_width(),40/988*window.get_height()));
-    PV.set_image2(imgpv);
-    return PV
+def setHUDPV(window, player,numPlayer):
+    basicfont = pygame.font.SysFont("Arial", 48)
+    PV = basicfont.render(str(player.get_hp()), True, (255,255,255))
+    textrect = PV.get_rect()
+    if (numPlayer==1):
+        textrect.x = window.get_width()*3/16
+        textrect.y = window.get_height()/10
+    else:
+        textrect.x = window.get_width()*13/16
+        textrect.y = window.get_height()/10
+    packPV = [PV,textrect,window,player,numPlayer]
+    return packPV

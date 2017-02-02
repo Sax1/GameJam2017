@@ -46,25 +46,25 @@ def keyPressedDownP2(keys,player,listSorts, keysPressed):
         keysPressed[4] = 1;
     elif(keys[K_LEFT] and keysPressed[4] == 0):
         keysPressed[5] = 1;
-    if(keys[K_KP4]):
+    if(keys[K_KP4] or keys[K_4]):
         player.changeSort(1);
-    elif(keys[K_KP6]):
+    elif(keys[K_KP6] or keys[K_6]):
         player.changeSort(-1);
-    if(keys[K_KP1] and keys[K_KP5]):
+    if((keys[K_KP1] or keys[K_1]) and (keys[K_KP5] or keys[K_5])):
         util.lauchboulecourant(player,(-1,-1),listSorts,5);
-    elif(keys[K_KP1] and keys[K_KP2]):
+    elif((keys[K_KP1] or keys[K_1]) and (keys[K_KP2] or keys[K_2])):
         util.lauchboulecourant(player,(-1,1),listSorts,3)
-    elif(keys[K_KP2] and keys[K_KP3]):
+    elif((keys[K_KP2] or keys[K_2]) and (keys[K_KP3] or keys[K_3])):
         util.lauchboulecourant(player,(1,1),listSorts,1)
-    elif(keys[K_KP3] and keys[K_KP5]):
+    elif((keys[K_KP3] or keys[K_3]) and (keys[K_KP5] or keys[K_5])):
         util.lauchboulecourant(player,(1,-1),listSorts,7);
-    elif(keys[K_KP5]):
+    elif(keys[K_KP5] or keys[K_5]):
         util.lauchboulecourant(player,(0,-1),listSorts,6);
-    elif(keys[K_KP2]):
+    elif(keys[K_KP2] or keys[K_2]):
         util.lauchboulecourant(player,(0,1),listSorts,2);
-    elif(keys[K_KP1]):
+    elif(keys[K_KP1] or keys[K_1]):
         util.lauchboulecourant(player,(-1,0),listSorts,4);
-    elif(keys[K_KP3]):
+    elif(keys[K_KP3] or keys[K_3]):
         util.lauchboulecourant(player,(1,0),listSorts,0);
 
 def keyPressedUp(key,listPlayers, nbJoueur, listDecors,keysPressed):

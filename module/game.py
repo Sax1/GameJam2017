@@ -10,7 +10,7 @@ import mouvement;
 import levels;
 
 
-def launch(window,listBG, listHUD, listDecors, listPlayers, listEnnemis, gravity, playerDeplacement, nbJoueur, ascendDecrement,listSorts,height,width,listCombo,keysPressed):
+def launch(window,listBG, listHUD, listDecors, listPlayers, listEnnemis, gravity, playerDeplacement, nbJoueur, ascendDecrement,listSorts,height,width,listCombo,keysPressed,listHUDPV):
     levels.loadLevel(1,listDecors);
     #pygame.mixer.music.load("./data/Musiques/whatIsLove.mp3");
     #pygame.mixer.music.play();
@@ -132,7 +132,12 @@ def launch(window,listBG, listHUD, listDecors, listPlayers, listEnnemis, gravity
         util.displayAllImages(window, listEnnemis[0]);
         util.displayAllImages(window, listEnnemis[1]);
         util.displayAllImages(window, listEnnemis[2]);
+        listHUDPVact = []
+        listHUDPVact.append(util.setHUDPV(listHUDPV[0][2],listHUDPV[0][3],listHUDPV[0][4]))
+        if(len(listHUDPV) ==2):
+            listHUDPVact.append(util.setHUDPV(listHUDPV[1][2],listHUDPV[1][3],listHUDPV[1][4]))
         util.displayAllImages(window, listHUD);
+        util.displayAllPv(window,listHUDPVact);
         for Combo in listCombo:
             util.displayAllImages(window, Combo);
 
