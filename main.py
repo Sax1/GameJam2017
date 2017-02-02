@@ -7,6 +7,7 @@
 import pygame;
 from pygame.locals import *;
 import sys;
+import pygame.mixer;
 
 #On definit le path
 sys.path.append('./module');
@@ -41,18 +42,22 @@ window  = pygame.display.set_mode((widowResolution.current_w,widowResolution.cur
 #Variables Globales
 gameState = 1;
 nbJoueur = 1;
-gravity = 10;
+gravity = 12;
 playerDeplacement = 8;
 ascendDecrement = 0.2;
 
 #Creation des joueurs
 listPlayers = [];
-listPlayers.append(player.Player(50,50,'./sprite/Joueur1/MageAV-1.png', 100, 1," ",1,""));
+listPlayers.append(player.Player(850,900,'./sprite/Joueur1/MageAV-1.png', 100, 1," ",1,""));
 
 #Creation des ennemis
 listEnnemis = [];
-listMonstreSquelette = factory.listeskelet();
-listEnnemis.append(listMonstreSquelette);
+ListSquelette1 = factory.listeskelet(100,50);
+ListSquelette2 = factory.listeskelet(950,50);
+ListSquelette3 = factory.listeskelet(1600,50);
+listEnnemis.append(ListSquelette1);
+listEnnemis.append(ListSquelette2);
+listEnnemis.append(ListSquelette3);
 
 #Listes des elements
 tabPathBDF = ['./sprite/attaques+mobs/BouledeFeu/bouledefeuD.png','./sprite/attaques+mobs/BouledeFeu/bouledefeuBD.png','./sprite/attaques+mobs/BouledeFeu/bouledefeuB.png','./sprite/attaques+mobs/BouledeFeu/bouledefeuBG.png','./sprite/attaques+mobs/BouledeFeu/bouledefeuG.png','./sprite/attaques+mobs/BouledeFeu/bouledefeuHG.png','./sprite/attaques+mobs/BouledeFeu/bouledefeuH.png','./sprite/attaques+mobs/BouledeFeu/bouledefeuHD.png']
@@ -77,10 +82,8 @@ listHUD = [];
 listDecors = [];
 listDecors.append(sprite.Sprite(0,-20,'./data/Sol-1.png'));
 listDecors.append(sprite.Sprite(0,height-20,'./data/Sol-1.png'));
-listDecors.append(sprite.Sprite(0,500,'./data/SolR1-1.png'));
 listDecors.append(sprite.Sprite(0,0,'./data/Mur1-1.png'));
 listDecors.append(sprite.Sprite(width-20,0,'./data/Mur1-1.png'));
-
 
 ################################################################################
 ################################ MAIN BOUCLE ###################################

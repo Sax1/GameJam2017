@@ -25,10 +25,10 @@ def listeVent(imgTab):
         listeVent.append(projectile.Projectile(-100,-100,imgTab[0],5,(0,0),-10,0,imgTab,"vent"))
     return listeVent
 
-def listeskelet():
+def listeskelet(x, y):
     listeskelet = [];
-    for i in range(0,1):
-        listeskelet.append(squelette.Squelette(450,50,'./sprite/Skeleton/skeletonDR-1.png', 30, 0.5, " ", 15))
+    for i in range(0,5):
+        listeskelet.append(squelette.Squelette(x,y,'./sprite/Skeleton/skeletonDR-1.png', 30, 0.5, " ", 15))
     return listeskelet
 
 def listexplo(imgTab):
