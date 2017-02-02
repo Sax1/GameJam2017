@@ -8,7 +8,7 @@ import projectile;
 import mobs
 
 
-def launch(window,listBG, listHUD, listDecors, listPlayers, listEnnemis, gravity, playerDeplacement, nbJoueur, ascendDecrement,listSorts,height,width):
+def launch(window,listBG, listHUD, listDecors, listPlayers, listEnnemis, gravity, playerDeplacement, nbJoueur, ascendDecrement,listSorts,height,width,listCombo):
 
     while 1:
         for event in pygame.event.get():
@@ -27,7 +27,7 @@ def launch(window,listBG, listHUD, listDecors, listPlayers, listEnnemis, gravity
             physic.applyCollisionWithFloor(player, listDecors);
             physic.applyJump(player, ascendDecrement);
             physic.jumpCollide(player, listDecors);
-        magic.applySort(listSorts,listPlayers,height,width)
+        magic.applySort(listSorts,listPlayers,height,width,listCombo)
 
 
         for squelette in listEnnemis[0]:
@@ -52,7 +52,13 @@ def launch(window,listBG, listHUD, listDecors, listPlayers, listEnnemis, gravity
                     elif (squelette.pos_x > jCible.pos_x):
                         squelette.setDeplacement(-6,0);
 
-        magic.applySort(listSorts,listEnnemis[0],height,width)
+        magic.applySort(listSorts,listEnnemis[0],height,width,listCombo)
+        for e in pygame.event.get():
+            if(e.type == pygame.USEREVENT):
+                for combos in listCombo:
+                    for combo in combos:
+                        combo.reinitProjectile()
+
 
 
         if(listPlayers[0].isDead()):
@@ -69,6 +75,8 @@ def launch(window,listBG, listHUD, listDecors, listPlayers, listEnnemis, gravity
         util.displayAllImages(window, listDecors);
         util.displayAllImages(window, listEnnemis[0]);
         util.displayAllImages(window, listHUD);
+        for Combo in listCombo:
+            util.displayAllImages(window, Combo);
 
 
         pygame.display.flip();
