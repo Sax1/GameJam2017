@@ -5,24 +5,25 @@ import physic;
 import util;
 import magic;
 import projectile;
-import mobs
+import mobs;
+import mouvement;
 
 
-def launch(window,listBG, listHUD, listDecors, listPlayers, listEnnemis, gravity, playerDeplacement, nbJoueur, ascendDecrement,listSorts,height,width):
-
+def launch(window,listBG, listHUD, listDecors, listPlayers, listEnnemis, gravity, playerDeplacement, nbJoueur, ascendDecrement,listSorts,height,width,keysPressed):
     while 1:
+        listPlayers[0].set_image("./sprite/Joueur1/MageAV-1.png");
         for event in pygame.event.get():
-            listPlayers[0].set_image("./sprite/Joueur1/MageAV-1.png");
-            keys = pygame.key.get_pressed();
-            if event.type == QUIT:
-                sys.exit()
-            if event.type == KEYDOWN:
+            if event.type == pygame.KEYDOWN:
+                keys = pygame.key.get_pressed();
                 if( event.key == 27):
                     sys.exit();
                 else:
-                    util.actionForKeyInput(keys,listPlayers, playerDeplacement, nbJoueur, listDecors, listSorts);
+                    mouvement.keyPressedDown(keys,listPlayers, nbJoueur, listDecors, listSorts,keysPressed);
+            if event.type == pygame.KEYUP:
+                mouvement.keyPressedUp(event.key,listPlayers, nbJoueur, listDecors,keysPressed);
 
         for player in listPlayers:
+            mouvement.applyDeplacement(keysPressed, player, listDecors, playerDeplacement);
             physic.applyGravity(player, gravity);
             physic.applyCollisionWithFloor(player, listDecors);
             physic.applyJump(player, ascendDecrement);
