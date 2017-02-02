@@ -7,6 +7,7 @@
 import pygame;
 from pygame.locals import *;
 import sys;
+import pygame.mixer;
 
 #On definit le path
 sys.path.append('./module');
@@ -27,27 +28,31 @@ import time;
 
 #init pygame
 pygame.init();
-pygame.key.set_repeat(200,20);
+#pygame.key.set_repeat(200,20);
 
 pygame.time.set_timer(pygame.USEREVENT, 50)
+
+
 
 #Creation de la fenetre a la de l'ecran
 widowResolution = pygame.display.Info();
 height = widowResolution.current_h;
 width = widowResolution.current_w;
 window  = pygame.display.set_mode((widowResolution.current_w,widowResolution.current_h), FULLSCREEN);
-
 #Variables Globales
 gameState = 1;
 nbJoueur = 1;
 gravity = 12;
 playerDeplacement = 8;
-ascendDecrement = 0.2;
+ascendDecrement = 0.25;
 lap = 0;
+
+#Boolean pour deplacement
+keysPressed = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 
 #Creation des joueurs
 listPlayers = [];
-listPlayers.append(player.Player(850,850,'./sprite/Joueur1/MageAV-1.png', 100, 2," ",1,""));
+listPlayers.append(player.Player(width/2,height-200,'./sprite/Joueur1/MageAV-1.png', 100, 2," ",1,""));
 
 #Creation des ennemis
 listEnnemis = [];
@@ -78,7 +83,7 @@ BG.set_image2(img)
 listBG = [];
 listBG.append(BG);
 listHUD = [];
-listHUD.append(util.setHUD(window, './data/HUD/HUD1Joueur.png'));
+listHUDPV = [];
 listDecors = [];
 listDecors.append(sprite.Sprite(0,-20,'./data/Sol-1.png'));
 listDecors.append(sprite.Sprite(0,height-20,'./data/Sol-1.png'));
@@ -89,6 +94,8 @@ listDecors.append(sprite.Sprite(width-20,0,'./data/Mur1-1.png'));
 ################################ MAIN BOUCLE ###################################
 ################################################################################
 while 1:
+    pygame.mixer.music.load("./data/Musiques/Dragonforce.mp3");
+    pygame.mixer.music.play();
     if(gameState == 1):
         boutonRes = menu.menuprin(window,width,height)
         if(boutonRes==1):
@@ -109,8 +116,10 @@ while 1:
                 monstre.set_pos(1600,50);
                 monstre.set_hp(40);
                 monstre.setLife =1;
+            listHUDPV.append(util.setHUDPV(window, listPlayers[0],1))
             listHUD.append(util.setHUD(window, './data/HUD/HUD1Joueur.png'));
-            game.launch(window,listBG, listHUD, listDecors, listPlayers,listEnnemis, gravity, playerDeplacement, nbJoueur, ascendDecrement,listeSort,height,width,listCombo,lap);
+            pygame.mixer.music.stop();
+            game.launch(window,listBG, listHUD, listDecors, listPlayers,listEnnemis, gravity, playerDeplacement, nbJoueur, ascendDecrement,listeSort,height,width,listCombo,keysPressed,listHUDPV, lap);
         elif(boutonRes==2):
             nbJoueur = 2;
             listPlayers[0].setGravity(1);
@@ -130,6 +139,7 @@ while 1:
                 monstre.set_hp(40);
                 monstre.setLife =1;
             listHUD.append(util.setHUD(window, './data/HUD/HUD2Joueur.png'));
+            listHUDPV.append(util.setHUDPV(window, listPlayers[0],1))
             if(len(listPlayers) == 1):
                 listPlayers.append(player.Player(900,900,'./sprite/Joueur2/Mage2AV-1.png',100,2," ",2,""));
             listPlayers[1].setGravity(1);
@@ -148,7 +158,9 @@ while 1:
                 monstre.set_pos(1600,50)
                 monstre.set_hp(40);
                 monstre.setLife =1;
-            game.launch(window,listBG, listHUD, listDecors, listPlayers, listEnnemis, gravity, playerDeplacement, nbJoueur, ascendDecrement,listeSort,height,width,listCombo,lap);
+            listHUDPV.append(util.setHUDPV(window, listPlayers[1],2))
+            pygame.mixer.music.stop();
+            game.launch(window,listBG, listHUD, listDecors, listPlayers, listEnnemis, gravity, playerDeplacement, nbJoueur, ascendDecrement,listeSort,height,width,listCombo,keysPressed,listHUDPV,lap);
         elif(boutonRes==3):
             menu.menuop(window,width,height)
         elif(boutonRes==4):
@@ -157,5 +169,7 @@ while 1:
         elif(boutonRes==5):
             sys.exit()
     else:
+        listHUDPV.append(util.setHUDPV(window, listPlayers[0],1))
         listHUD.append(util.setHUD(window, './data/HUD/HUD1Joueur.png'));
-        game.launch(window,listBG, listHUD, listDecors, listPlayers, listEnnemis, gravity, playerDeplacement, nbJoueur, ascendDecrement,listeSort,height,width,listCombo,lap);
+        pygame.mixer.music.stop();
+        game.launch(window,listBG, listHUD, listDecors, listPlayers, listEnnemis, gravity, playerDeplacement, nbJoueur, ascendDecrement,listeSort,height,width,listCombo,keysPressed,listHUDPV,lap);

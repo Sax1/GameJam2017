@@ -106,7 +106,6 @@ def contactHurting(player, mob):
     centerMob = (mob.get_pos()[0]+mob.get_img().get_width()/2, mob.get_pos()[1]+mob.get_img().get_height()/2);
     if(centerMob[0] > player.get_pos()[0] and centerMob[0] < player.get_pos()[0]+player.get_img().get_width() and centerMob[1] > player.get_pos()[1] and centerMob[1] < player.get_pos()[1]+ player.get_img().get_height()):
         player.setDamage(mob.getDamageMonster());
-        print player.get_hp();
 
 def setPosFromDir(j, sort, dir):
     centreJoueur = (j.get_pos()[0]+j.get_img().get_width()/2,j.get_pos()[1]+j.get_img().get_height()/2)

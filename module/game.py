@@ -6,12 +6,19 @@ import util;
 import magic;
 import projectile;
 import mobs;
+import mouvement;
 import levels;
 
 
-def launch(window,listBG, listHUD, listDecors, listPlayers, listEnnemis, gravity, playerDeplacement, nbJoueur, ascendDecrement,listSorts,height,width,listCombo,lap):
+def launch(window,listBG, listHUD, listDecors, listPlayers, listEnnemis, gravity, playerDeplacement, nbJoueur, ascendDecrement,listSorts,height,width,listCombo,keysPressed,listHUDPV,lap):
+
     levels.loadLevel(1,listDecors);
+    pygame.mixer.music.load("./data/Musiques/whatIsLove.mp3");
+    pygame.mixer.music.play();
     while 1:
+        listPlayers[0].set_image("./sprite/Joueur1/MageAV-1.png");
+        if(nbJoueur == 2):
+            listPlayers[1].set_image("./sprite/Joueur2/Mage2AV-1.png");
         for event in pygame.event.get():
             listPlayers[0].set_image("./sprite/Joueur1/MageAV-1.png");
             if (nbJoueur ==2):
@@ -22,13 +29,17 @@ def launch(window,listBG, listHUD, listDecors, listPlayers, listEnnemis, gravity
             keys = pygame.key.get_pressed();
             if event.type == QUIT:
                 sys.exit()
-            if event.type == KEYDOWN:
+            if event.type == pygame.KEYDOWN:
+                keys = pygame.key.get_pressed();
                 if( event.key == 27):
                     sys.exit();
                 else:
-                    util.actionForKeyInput(keys,listPlayers, playerDeplacement, nbJoueur, listDecors, listSorts);
+                    mouvement.keyPressedDown(keys,listPlayers, nbJoueur, listDecors, listSorts,keysPressed);
+            if event.type == pygame.KEYUP:
+                mouvement.keyPressedUp(event.key,listPlayers, nbJoueur, listDecors,keysPressed);
 
         for player in listPlayers:
+            mouvement.applyDeplacement(keysPressed, player, listDecors, playerDeplacement);
             physic.applyGravity(player, gravity);
             physic.applyCollisionWithFloor(player, listDecors);
             physic.applyJump(player, ascendDecrement);
@@ -120,6 +131,7 @@ def launch(window,listBG, listHUD, listDecors, listPlayers, listEnnemis, gravity
         magic.applySort(listSorts,listEnnemis[2],height,width,listCombo)
 
 
+
         if(listPlayers[0].isDead()):
             break;
         elif(nbJoueur == 2 and listPlayers[1].isDead()):
@@ -135,7 +147,12 @@ def launch(window,listBG, listHUD, listDecors, listPlayers, listEnnemis, gravity
         util.displayAllImages(window, listEnnemis[0]);
         util.displayAllImages(window, listEnnemis[1]);
         util.displayAllImages(window, listEnnemis[2]);
+        listHUDPVact = []
+        listHUDPVact.append(util.setHUDPV(listHUDPV[0][2],listHUDPV[0][3],listHUDPV[0][4]))
+        if(len(listHUDPV) ==2):
+            listHUDPVact.append(util.setHUDPV(listHUDPV[1][2],listHUDPV[1][3],listHUDPV[1][4]))
         util.displayAllImages(window, listHUD);
+        util.displayAllPv(window,listHUDPVact);
         for Combo in listCombo:
             util.displayAllImages(window, Combo);
 

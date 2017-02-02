@@ -21,3 +21,5 @@ class Player(character.Character):
                 self.sortCourant = 2
             else:
                 self.sortCourant = self.sortCourant+val
+    def getNumPlayer(self):
+        return self.numPlayer;
