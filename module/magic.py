@@ -4,17 +4,18 @@ import projectile
 import util
 import physic
 import character
+import time
 
-def applySort(listSorts,listEntity,height,width):
+def applySort(listSorts,listEntity,height,width,listCombo):
     for listSort in listSorts:
-        seekAndDestroy(listEntity, listSort);
+        seekAndDestroy(listEntity, listSort,listCombo);
         isOutside(listSort,height,width);
         applyDeplacement(listSort);
 
-def seekAndDestroy(listEntity, listSorts):
+def seekAndDestroy(listEntity, listSorts,listCombo):
     for entity in listEntity:
         for sort in listSorts:
-            applyHurting(entity, sort);
+            applyHurting(entity, sort,listCombo);
 
 
 def isOutside(listSorts,height,width):
@@ -39,10 +40,65 @@ def launchBoule(dep,listSorts, j,direction):
             b = 1;
         i = i+1;
 
-def applyHurting(entity, sort):
+def applyexplo(j,sort,listCombo):
+    i = 0;
+    b = 0;
+    while(i < len(listCombo) and b == 0):
+        if(listCombo[i].present == 0):
+            listCombo[i].set_image(listCombo[i].getimgTab()[0])
+            listCombo[i].set_pos(sort.get_pos()[0],sort.get_pos()[1])
+            listCombo[i].setPresent(1)
+            b = 1;
+        i = i+1;
+
+def applyCombo(entity,sort,listCombo):
+    if (not entity.getStatut()):
+        entity.setStatut(sort.getTypep());
+    elif (entity.getStatut() == "feu"):
+        if (sort.getTypep() == "feu"):
+            applyexplo(entity,sort,listCombo[0])
+            entity.setDamage(listCombo[0][0].getDamage())
+            entity.setStatut("")
+        elif(sort.getTypep() == "glace"):
+            applyexplo(entity,sort,listCombo[0])
+            entity.setDamage(listCombo[0][0].getDamage())
+            entity.setStatut("")
+        elif(sort.getTypep() == "vent"):
+            applyexplo(entity,sort,listCombo[0])
+            entity.setDamage(listCombo[0][0].getDamage())
+            entity.setStatut("")
+    elif (entity.getStatut() == "glace"):
+        if (sort.getTypep() == "glace"):
+            applyexplo(entity,sort,listCombo[0])
+            entity.setDamage(listCombo[0][0].getDamage())
+            entity.setStatut("")
+        elif(sort.getTypep() == "feu"):
+            applyexplo(entity,sort,listCombo[0])
+            entity.setDamage(listCombo[0][0].getDamage())
+            entity.setStatut("")
+        elif(sort.getTypep() == "vent"):
+            applyexplo(entity,sort,listCombo[0])
+            entity.setDamage(listCombo[0][0].getDamage())
+            entity.setStatut("")
+    elif (entity.getStatut() == "vent"):
+        if (sort.getTypep() == "glace"):
+            applyexplo(entity,sort,listCombo[0])
+            entity.setDamage(listCombo[0][0].getDamage())
+            entity.setStatut("")
+        elif(sort.getTypep() == "feu"):
+            applyexplo(entity,sort,listCombo[0])
+            entity.setDamage(listCombo[0][0].getDamage())
+            entity.setStatut("")
+        elif(sort.getTypep() == "vent"):
+            applyexplo(entity,sort,listCombo[0])
+            entity.setDamage(listCombo[0][0].getDamage())
+            entity.setStatut("")
+
+def applyHurting(entity, sort,listCombo):
     centerSort = (sort.get_pos()[0]+sort.get_img().get_width()/2,sort.get_pos()[1]+sort.get_img().get_height()/2);
     if(centerSort[0] > entity.get_pos()[0] and centerSort[0] < entity.get_pos()[0]+entity.get_img().get_width() and centerSort[1] > entity.get_pos()[1] and centerSort[1] < entity.get_pos()[1]+entity.get_img().get_height()):
         entity.setDamage(sort.getDamage());
+        applyCombo(entity,sort,listCombo);
         sort.reinitProjectile();
 
 def setPosFromDir(j, sort, dir):

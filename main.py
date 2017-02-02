@@ -22,12 +22,14 @@ import player;
 import mobs;
 import factory;
 import levels;
+import time;
 
 
 #init pygame
 pygame.init();
 pygame.key.set_repeat(200,20);
 
+pygame.time.set_timer(pygame.USEREVENT, 50)
 
 #Creation de la fenetre a la de l'ecran
 widowResolution = pygame.display.Info();
@@ -59,7 +61,9 @@ listEnnemis.append(ListSquelette3);
 tabPathBDF = ['./sprite/attaques+mobs/BouledeFeu/bouledefeuD.png','./sprite/attaques+mobs/BouledeFeu/bouledefeuBD.png','./sprite/attaques+mobs/BouledeFeu/bouledefeuB.png','./sprite/attaques+mobs/BouledeFeu/bouledefeuBG.png','./sprite/attaques+mobs/BouledeFeu/bouledefeuG.png','./sprite/attaques+mobs/BouledeFeu/bouledefeuHG.png','./sprite/attaques+mobs/BouledeFeu/bouledefeuH.png','./sprite/attaques+mobs/BouledeFeu/bouledefeuHD.png']
 tabPathPDG = ['./sprite/attaques+mobs/PicDeGlace/picGlaceD.png','./sprite/attaques+mobs/PicDeGlace/picGlaceBD.png','./sprite/attaques+mobs/PicDeGlace/picGlaceB.png','./sprite/attaques+mobs/PicDeGlace/picGlaceBG.png','./sprite/attaques+mobs/PicDeGlace/picGlaceG.png','./sprite/attaques+mobs/PicDeGlace/picGlaceHG.png','./sprite/attaques+mobs/PicDeGlace/picGlaceH.png','./sprite/attaques+mobs/PicDeGlace/picGlaceHD.png']
 tabPathV = ['./sprite/attaques+mobs/Tornade/Tornade-1.png','./sprite/attaques+mobs/Tornade/Tornade-1.png','./sprite/attaques+mobs/Tornade/Tornade-1.png','./sprite/attaques+mobs/Tornade/Tornade-1.png','./sprite/attaques+mobs/Tornade/Tornade-1.png','./sprite/attaques+mobs/Tornade/Tornade-1.png','./sprite/attaques+mobs/Tornade/Tornade-1.png','./sprite/attaques+mobs/Tornade/Tornade-1.png']
-
+tabPathE = ['./sprite/attaques+mobs/explosion/explosion-3.png','./sprite/attaques+mobs/explosion/explosion-3.png','./sprite/attaques+mobs/explosion/explosion-3.png','./sprite/attaques+mobs/explosion/explosion-3.png','./sprite/attaques+mobs/explosion/explosion-3.png','./sprite/attaques+mobs/explosion/explosion-3.png','./sprite/attaques+mobs/explosion/explosion-3.png','./sprite/attaques+mobs/explosion/explosion-3.png']
+listCombo = []
+listCombo.append(factory.listexplo(tabPathE))
 listeSort = [factory.listeboulefeu(tabPathBDF),factory.listePicGlace(tabPathPDG),factory.listeVent(tabPathV)]
 
 posf = window.get_rect()
@@ -89,13 +93,18 @@ while 1:
         if(boutonRes==1):
             nbJoueur = 1;
             listHUD.append(util.setHUD(window, './data/HUD/HUD1Joueur.png'));
-            game.launch(window,listBG, listHUD, listDecors, listPlayers,listEnnemis, gravity, playerDeplacement, nbJoueur, ascendDecrement,listeSort,height,width);
+            game.launch(window,listBG, listHUD, listDecors, listPlayers,listEnnemis, gravity, playerDeplacement, nbJoueur, ascendDecrement,listeSort,height,width,listCombo);
         elif(boutonRes==2):
             nbJoueur = 2;
             listHUD.append(util.setHUD(window, './data/HUD/HUD2Joueur.png'));
             if(len(listPlayers) == 1):
+<<<<<<< HEAD
                 listPlayers.append(player.Player(900,900,'./sprite/Joueur2/Mage2AV-1.png',100,1," ",2,""));
             game.launch(window,listBG, listHUD, listDecors, listPlayers, listEnnemis, gravity, playerDeplacement, nbJoueur, ascendDecrement,listeSort,height,width);
+=======
+                listPlayers.append(player.Player(300,100,'./sprite/Joueur2/Mage2AV-1.png',100,1," ",2,""));
+            game.launch(window,listBG, listHUD, listDecors, listPlayers, listEnnemis, gravity, playerDeplacement, nbJoueur, ascendDecrement,listeSort,height,width,listCombo);
+>>>>>>> ddaaa85e91092aecfccf9d4ce4bbb13607bc6b7f
         elif(boutonRes==3):
             menu.menuop(window,width,height)
         elif(boutonRes==4):
@@ -106,4 +115,4 @@ while 1:
             sys.exit()
     else:
         listHUD.append(util.setHUD(window, './data/HUD/HUD1Joueur.png'));
-        game.launch(window,listBG, listHUD, listDecors, listPlayers, listEnnemis, gravity, playerDeplacement, nbJoueur, ascendDecrement,listeSort,height,width);
+        game.launch(window,listBG, listHUD, listDecors, listPlayers, listEnnemis, gravity, playerDeplacement, nbJoueur, ascendDecrement,listeSort,height,width,listCombo);

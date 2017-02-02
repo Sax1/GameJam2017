@@ -9,8 +9,12 @@ import mobs;
 import levels;
 
 
+<<<<<<< HEAD
 def launch(window,listBG, listHUD, listDecors, listPlayers, listEnnemis, gravity, playerDeplacement, nbJoueur, ascendDecrement,listSorts,height,width):
     levels.loadLevel(1,listDecors);
+=======
+def launch(window,listBG, listHUD, listDecors, listPlayers, listEnnemis, gravity, playerDeplacement, nbJoueur, ascendDecrement,listSorts,height,width,listCombo):
+>>>>>>> ddaaa85e91092aecfccf9d4ce4bbb13607bc6b7f
 
     while 1:
         for event in pygame.event.get():
@@ -31,7 +35,7 @@ def launch(window,listBG, listHUD, listDecors, listPlayers, listEnnemis, gravity
             physic.applyCollisionWithFloor(player, listDecors);
             physic.applyJump(player, ascendDecrement);
             physic.jumpCollide(player, listDecors);
-        magic.applySort(listSorts,listPlayers,height,width)
+        magic.applySort(listSorts,listPlayers,height,width,listCombo)
 
 
         #for mobs in listEnnemis:
@@ -56,7 +60,18 @@ def launch(window,listBG, listHUD, listDecors, listPlayers, listEnnemis, gravity
                         squelette.setDeplacement(6,0);
                     elif (squelette.pos_x > jCible.pos_x):
                         squelette.setDeplacement(-6,0);
+<<<<<<< HEAD
         magic.applySort(listSorts,listEnnemis[0],height,width)
+=======
+
+        magic.applySort(listSorts,listEnnemis[0],height,width,listCombo)
+        for e in pygame.event.get():
+            if(e.type == pygame.USEREVENT):
+                for combos in listCombo:
+                    for combo in combos:
+                        combo.reinitProjectile()
+
+>>>>>>> ddaaa85e91092aecfccf9d4ce4bbb13607bc6b7f
 
 
         for squelette in listEnnemis[1]:
@@ -123,6 +138,8 @@ def launch(window,listBG, listHUD, listDecors, listPlayers, listEnnemis, gravity
         util.displayAllImages(window, listEnnemis[1]);
         util.displayAllImages(window, listEnnemis[2]);
         util.displayAllImages(window, listHUD);
+        for Combo in listCombo:
+            util.displayAllImages(window, Combo);
 
 
         pygame.display.flip();
