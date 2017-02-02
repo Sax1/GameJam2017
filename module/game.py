@@ -10,7 +10,6 @@ import levels;
 
 
 def launch(window,listBG, listHUD, listDecors, listPlayers, listEnnemis, gravity, playerDeplacement, nbJoueur, ascendDecrement,listSorts,height,width):
-    #numLevel pas definit
     levels.loadLevel(1,listDecors);
 
     while 1:
