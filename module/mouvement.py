@@ -114,8 +114,8 @@ def applyDeplacement(keysPressed,player, listDecors, playerDeplacement):
         if(keysPressed[5] == 1):
             if(physic.isTouching('left',player,listDecors) == 0):
                 player.setDeplacement(-playerDeplacement,0);
-                player.set_image("./sprite/Joueur1/MageGA-1.png")
+                player.set_image("./sprite/Joueur2/Mage2GA-1.png")
         elif(keysPressed[4] == 1):
             if(physic.isTouching('right',player,listDecors) == 0):
                 player.setDeplacement(playerDeplacement,0);
-                player.set_image("./sprite/Joueur1/MageDR-1.png")
+                player.set_image("./sprite/Joueur2/Mage2DR-1.png")
