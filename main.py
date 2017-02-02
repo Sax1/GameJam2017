@@ -92,12 +92,15 @@ listDecors.append(sprite.Sprite(width-20,0,'./data/Mur1-1.png'));
 ################################ MAIN BOUCLE ###################################
 ################################################################################
 while 1:
+    pygame.mixer.music.load("./data/Musiques/Dragonforce.mp3");
+    pygame.mixer.music.play();
     if(gameState == 1):
         boutonRes = menu.menuprin(window,width,height)
         if(boutonRes==1):
             nbJoueur = 1;
             listHUDPV.append(util.setHUDPV(window, listPlayers[0],1))
             listHUD.append(util.setHUD(window, './data/HUD/HUD1Joueur.png'));
+            pygame.mixer.music.stop();
             game.launch(window,listBG, listHUD, listDecors, listPlayers,listEnnemis, gravity, playerDeplacement, nbJoueur, ascendDecrement,listeSort,height,width,listCombo,keysPressed,listHUDPV);
         elif(boutonRes==2):
             nbJoueur = 2;
@@ -106,6 +109,7 @@ while 1:
             if(len(listPlayers) == 1):
                 listPlayers.append(player.Player(300,100,'./sprite/Joueur2/Mage2AV-1.png',100,1," ",2,""));
             listHUDPV.append(util.setHUDPV(window, listPlayers[1],2))
+            pygame.mixer.music.stop();
             game.launch(window,listBG, listHUD, listDecors, listPlayers, listEnnemis, gravity, playerDeplacement, nbJoueur, ascendDecrement,listeSort,height,width,listCombo,keysPressed,listHUDPV);
         elif(boutonRes==3):
             menu.menuop(window,width,height)
@@ -116,4 +120,5 @@ while 1:
     else:
         listHUDPV.append(util.setHUDPV(window, listPlayers[0],1))
         listHUD.append(util.setHUD(window, './data/HUD/HUD1Joueur.png'));
+        pygame.mixer.music.stop();
         game.launch(window,listBG, listHUD, listDecors, listPlayers, listEnnemis, gravity, playerDeplacement, nbJoueur, ascendDecrement,listeSort,height,width,listCombo,keysPressed,listHUDPV);

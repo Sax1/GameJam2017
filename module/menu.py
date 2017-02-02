@@ -92,7 +92,7 @@ def menuprin(window,width,height):
     basicfont = pygame.font.SysFont("Winks", 38)
     text = basicfont.render('Mago et le Pognon magique', True, (0,0,0))
     textrect = text.get_rect()
-    textrect.x = width*6/16
+    textrect.x = width*5.5/16
     textrect.y = height/6
     window.blit(text, textrect)
     pygame.display.flip()
