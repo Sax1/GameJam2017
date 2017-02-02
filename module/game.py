@@ -11,6 +11,8 @@ import levels;
 
 def launch(window,listBG, listHUD, listDecors, listPlayers, listEnnemis, gravity, playerDeplacement, nbJoueur, ascendDecrement,listSorts,height,width,listCombo):
     levels.loadLevel(1,listDecors);
+    pygame.mixer.music.load("./data/Musiques/whatIsLove.mp3");
+    pygame.mixer.music.play();
     while 1:
         for event in pygame.event.get():
             listPlayers[0].set_image("./sprite/Joueur1/MageAV-1.png");

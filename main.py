@@ -7,6 +7,7 @@
 import pygame;
 from pygame.locals import *;
 import sys;
+import pygame.mixer;
 
 #On definit le path
 sys.path.append('./module');

@@ -54,6 +54,8 @@ def touchJ1(keys, player, listDecors, playerDeplacement, listSorts):
         lauchboulecourant(player,(1,1),listSorts,1)
     elif(keys[106]):#droite
         lauchboulecourant(player,(1,0),listSorts,0)
+        pygame.mixer.music.load("./data/Musiques/boulefeu.wav");
+        pygame.mixer.music.play();
     elif(keys[103] and keys[104]):
         lauchboulecourant(player,(-1,1),listSorts,3)
     elif(keys[103] and keys[121]):
