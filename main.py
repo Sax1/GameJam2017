@@ -98,13 +98,8 @@ while 1:
             nbJoueur = 2;
             listHUD.append(util.setHUD(window, './data/HUD/HUD2Joueur.png'));
             if(len(listPlayers) == 1):
-<<<<<<< HEAD
                 listPlayers.append(player.Player(900,900,'./sprite/Joueur2/Mage2AV-1.png',100,1," ",2,""));
-            game.launch(window,listBG, listHUD, listDecors, listPlayers, listEnnemis, gravity, playerDeplacement, nbJoueur, ascendDecrement,listeSort,height,width);
-=======
-                listPlayers.append(player.Player(300,100,'./sprite/Joueur2/Mage2AV-1.png',100,1," ",2,""));
             game.launch(window,listBG, listHUD, listDecors, listPlayers, listEnnemis, gravity, playerDeplacement, nbJoueur, ascendDecrement,listeSort,height,width,listCombo);
->>>>>>> ddaaa85e91092aecfccf9d4ce4bbb13607bc6b7f
         elif(boutonRes==3):
             menu.menuop(window,width,height)
         elif(boutonRes==4):

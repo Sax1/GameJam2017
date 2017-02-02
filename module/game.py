@@ -9,13 +9,8 @@ import mobs;
 import levels;
 
 
-<<<<<<< HEAD
-def launch(window,listBG, listHUD, listDecors, listPlayers, listEnnemis, gravity, playerDeplacement, nbJoueur, ascendDecrement,listSorts,height,width):
-    levels.loadLevel(1,listDecors);
-=======
 def launch(window,listBG, listHUD, listDecors, listPlayers, listEnnemis, gravity, playerDeplacement, nbJoueur, ascendDecrement,listSorts,height,width,listCombo):
->>>>>>> ddaaa85e91092aecfccf9d4ce4bbb13607bc6b7f
-
+    levels.loadLevel(1,listDecors);
     while 1:
         for event in pygame.event.get():
             listPlayers[0].set_image("./sprite/Joueur1/MageAV-1.png");
@@ -60,9 +55,6 @@ def launch(window,listBG, listHUD, listDecors, listPlayers, listEnnemis, gravity
                         squelette.setDeplacement(6,0);
                     elif (squelette.pos_x > jCible.pos_x):
                         squelette.setDeplacement(-6,0);
-<<<<<<< HEAD
-        magic.applySort(listSorts,listEnnemis[0],height,width)
-=======
 
         magic.applySort(listSorts,listEnnemis[0],height,width,listCombo)
         for e in pygame.event.get():
@@ -70,8 +62,6 @@ def launch(window,listBG, listHUD, listDecors, listPlayers, listEnnemis, gravity
                 for combos in listCombo:
                     for combo in combos:
                         combo.reinitProjectile()
-
->>>>>>> ddaaa85e91092aecfccf9d4ce4bbb13607bc6b7f
 
 
         for squelette in listEnnemis[1]:
@@ -95,7 +85,7 @@ def launch(window,listBG, listHUD, listDecors, listPlayers, listEnnemis, gravity
                         squelette.setDeplacement(6,0);
                     elif (squelette.pos_x > jCible.pos_x):
                         squelette.setDeplacement(-6,0);
-        magic.applySort(listSorts,listEnnemis[1],height,width)
+        magic.applySort(listSorts,listEnnemis[1],height,width,listCombo)
 
 
         for squelette in listEnnemis[2]:
@@ -119,7 +109,7 @@ def launch(window,listBG, listHUD, listDecors, listPlayers, listEnnemis, gravity
                         squelette.setDeplacement(6,0);
                     elif (squelette.pos_x > jCible.pos_x):
                         squelette.setDeplacement(-6,0);
-        magic.applySort(listSorts,listEnnemis[2],height,width)
+        magic.applySort(listSorts,listEnnemis[2],height,width,listCombo)
 
 
         if(listPlayers[0].isDead()):
