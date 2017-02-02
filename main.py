@@ -43,7 +43,7 @@ gameState = 1;
 nbJoueur = 1;
 gravity = 12;
 playerDeplacement = 8;
-ascendDecrement = 0.2;
+ascendDecrement = 0.3;
 #Boolean pour deplacement
 keysPressed = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 
