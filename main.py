@@ -31,12 +31,13 @@ pygame.key.set_repeat(200,20);
 
 pygame.time.set_timer(pygame.USEREVENT, 50)
 
+
+
 #Creation de la fenetre a la de l'ecran
 widowResolution = pygame.display.Info();
 height = widowResolution.current_h;
 width = widowResolution.current_w;
 window  = pygame.display.set_mode((widowResolution.current_w,widowResolution.current_h), FULLSCREEN);
-
 #Variables Globales
 gameState = 1;
 nbJoueur = 1;
@@ -73,7 +74,6 @@ BG.set_image2(img)
 listBG = [];
 listBG.append(BG);
 listHUD = [];
-listHUD.append(util.setHUD(window, './data/HUD/HUD1Joueur.png'));
 listDecors = [];
 listDecors.append(sprite.Sprite(0,-20,'./data/Sol-1.png'));
 listDecors.append(sprite.Sprite(0,height-20,'./data/Sol-1.png'));
@@ -90,20 +90,22 @@ while 1:
         boutonRes = menu.menuprin(window,width,height)
         if(boutonRes==1):
             nbJoueur = 1;
+            listHUD.append(util.setHUDPV(window, './data/HUD/BarDeVie.png', listPlayers[0]))
             listHUD.append(util.setHUD(window, './data/HUD/HUD1Joueur.png'));
             game.launch(window,listBG, listHUD, listDecors, listPlayers,listEnnemis, gravity, playerDeplacement, nbJoueur, ascendDecrement,listeSort,height,width,listCombo);
         elif(boutonRes==2):
             nbJoueur = 2;
             listHUD.append(util.setHUD(window, './data/HUD/HUD2Joueur.png'));
+            listHUD.append(util.setHUDPV(window, './data/HUD/BarDeVie.png', listPlayers[0]))
             if(len(listPlayers) == 1):
                 listPlayers.append(player.Player(300,100,'./sprite/Joueur2/Mage2AV-1.png',100,1," ",2,""));
+            listHUD.append(util.setHUDPV(window, './data/HUD/BarDeVie.png', listPlayers[1]))
             game.launch(window,listBG, listHUD, listDecors, listPlayers, listEnnemis, gravity, playerDeplacement, nbJoueur, ascendDecrement,listeSort,height,width,listCombo);
         elif(boutonRes==3):
             menu.menuop(window,width,height)
         elif(boutonRes==4):
             #menu.menucred
             print "4";
-            factory.listeboulefeu()
         elif(boutonRes==5):
             sys.exit()
     else:

@@ -61,6 +61,7 @@ def launch(window,listBG, listHUD, listDecors, listPlayers, listEnnemis, gravity
 
 
 
+
         if(listPlayers[0].isDead()):
             break;
         elif(nbJoueur == 2 and listPlayers[1].isDead()):

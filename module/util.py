@@ -101,10 +101,17 @@ def touchJ2(keys, player, listDecors, playerDeplacement, listSorts):
     elif(keys[53]):#haut
         lauchboulecourant(player,(0,-1),listSorts,6)
 
-def setHUD(window, path):
+def setHUD(window, pathhud):
     posf = window.get_rect();
-    HUD = sprite.Sprite(0,0,path);
+    HUD = sprite.Sprite(0,0,pathhud);
     img = HUD.get_img()
     img = pygame.transform.scale(img, (posf.right, HUD.get_img().get_height()));
     HUD.set_image2(img);
     return HUD;
+
+def setHUDPV(window, pathpv, player):
+    PV = sprite.Sprite(800,800,pathpv) #window.get_width()/2+(player.get_hp()/170*100),window.get_height()/2
+    imgpv = PV.get_img()
+    imgpv = pygame.transform.scale(imgpv, (170/1680*window.get_width(),40/988*window.get_height()));
+    PV.set_image2(imgpv);
+    return PV
