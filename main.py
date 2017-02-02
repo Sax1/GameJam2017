@@ -110,8 +110,7 @@ while 1:
         elif(boutonRes==3):
             menu.menuop(window,width,height)
         elif(boutonRes==4):
-            #menu.menucred
-            print "4";
+            menu.menucredit(window,width,height)
         elif(boutonRes==5):
             sys.exit()
     else:
