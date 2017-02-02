@@ -40,6 +40,7 @@ def applyCollisionWithFloor(player, listDecors):
             player.setJump(0);
             player.setAscend(0);
             player.setAscendValue(10);
+            player.set_pos(player.get_pos()[0],elem.get_pos()[1]-player.get_img().get_height());
             break;
         else:
             player.setLanded(0);

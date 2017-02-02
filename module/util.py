@@ -15,10 +15,10 @@ def displayAllImages(window, listElements):
     for elem in listElements:
         window.blit(elem.get_img(),elem.get_pos());
 
-def actionForKeyInput(keys, listPlayers, playerDeplacement, nbJoueur, listDecors, listSorts):
-    touchJ1(keys,listPlayers[0],listDecors, playerDeplacement, listSorts)
+def actionForKeyInput(keys, listPlayers, playerDeplacement, nbJoueur, listDecors, listSorts,keysPressed):
+    touchJ1(keys,listPlayers[0],listDecors, playerDeplacement, listSorts,keysPressed)
     if(nbJoueur == 2):
-        touchJ2(keys,listPlayers[1],listDecors, playerDeplacement, listSorts)
+        touchJ2(keys,listPlayers[1],listDecors, playerDeplacement, listSorts,keysPressed)
 
 def lauchboulecourant(player, playerDeplacement, listSorts,direction):
     if (player.sortCourant == 0):
@@ -30,19 +30,21 @@ def lauchboulecourant(player, playerDeplacement, listSorts,direction):
 
 
 def touchJ1(keys, player, listDecors, playerDeplacement, listSorts):
+    x = 0;
+    y = 0;
     if(keys[122]):
         if(player.getJump() == 0 and player.getLanded() == 1):
             player.setJump(1);
             player.setAscend(1);
             player.setAscendValue(10);
-            player.setDeplacement(0,-player.getAscendValue());
+            y = -player.getAscendValue();
     if( keys[113]):
         if(physic.isTouching('left',player,listDecors) == 0):
-            player.setDeplacement(-playerDeplacement,0)
+            x = -playerDeplacement;
             player.set_image("./sprite/Joueur1/MageGA-1.png")
     elif( keys[100]):
         if(physic.isTouching('right',player,listDecors) == 0):
-            player.setDeplacement(playerDeplacement,0)
+            x = playerDeplacement;
             player.set_image("./sprite/Joueur1/MageDR-1.png")
     if(keys[101]):
         player.changeSort(1)
@@ -65,7 +67,7 @@ def touchJ1(keys, player, listDecors, playerDeplacement, listSorts):
     elif(keys[104]):#bas
         lauchboulecourant(player,(0,1),listSorts,2)
     elif(keys[121]):#haut
-        lauchboulecourant(player,(0,-1),listSorts,6)
+        player.setDeplacement(x,y);
 
 def touchJ2(keys, player, listDecors, playerDeplacement, listSorts):
     if(keys[K_UP]):
@@ -92,15 +94,15 @@ def touchJ2(keys, player, listDecors, playerDeplacement, listSorts):
         lauchboulecourant(player,(1,1),listSorts,1)
     elif(keys[51]):#droite
         lauchboulecourant(player,(1,0),listSorts,0)
-    elif(keys[49] and keys[50]):
+    elif((keys[49] or keys[257]) and (keys[50] or keys[258])):
         lauchboulecourant(player,(-1,1),listSorts,3)
-    elif(keys[49] and keys[53]):
+    elif((keys[49] or keys[257]) and (keys[53] or keys[261])):
         lauchboulecourant(player,(-1,-1),listSorts,5)
-    elif(keys[49]):#gauche
+    elif(keys[49] or keys[257]):#gauche
         lauchboulecourant(player,(-1,0),listSorts,4)
-    elif(keys[50]):#bas
+    elif(keys[50] or keys[258]):#bas
         lauchboulecourant(player,(0,1),listSorts,2)
-    elif(keys[53]):#haut
+    elif(keys[53] or keys[261]):#haut
         lauchboulecourant(player,(0,-1),listSorts,6)
 
 def setHUD(window, pathhud):

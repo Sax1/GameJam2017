@@ -28,7 +28,7 @@ def listeVent(imgTab):
 def listeskelet(x, y):
     listeskelet = [];
     for i in range(0,5):
-        listeskelet.append(squelette.Squelette(x,y,'./sprite/Skeleton/skeletonDR-1.png', 30, 0.5, " ", 15))
+        listeskelet.append(squelette.Squelette(x+i,y+i,'./sprite/Skeleton/skeletonDR-1.png', 30, 0.5, " ", 15))
     return listeskelet
 
 def listexplo(imgTab):

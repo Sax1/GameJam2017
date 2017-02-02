@@ -28,7 +28,7 @@ import time;
 
 #init pygame
 pygame.init();
-pygame.key.set_repeat(200,20);
+#pygame.key.set_repeat(200,20);
 
 pygame.time.set_timer(pygame.USEREVENT, 50)
 
@@ -44,11 +44,13 @@ gameState = 1;
 nbJoueur = 1;
 gravity = 12;
 playerDeplacement = 8;
-ascendDecrement = 0.2;
+ascendDecrement = 0.3;
+#Boolean pour deplacement
+keysPressed = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 
 #Creation des joueurs
 listPlayers = [];
-listPlayers.append(player.Player(850,900,'./sprite/Joueur1/MageAV-1.png', 100, 1," ",1,""));
+listPlayers.append(player.Player(width/2,height-200,'./sprite/Joueur1/MageAV-1.png', 100, 1," ",1,""));
 
 #Creation des ennemis
 listEnnemis = [];
@@ -95,7 +97,7 @@ while 1:
             nbJoueur = 1;
             listHUD.append(util.setHUDPV(window, './data/HUD/BarDeVie.png', listPlayers[0]))
             listHUD.append(util.setHUD(window, './data/HUD/HUD1Joueur.png'));
-            game.launch(window,listBG, listHUD, listDecors, listPlayers,listEnnemis, gravity, playerDeplacement, nbJoueur, ascendDecrement,listeSort,height,width,listCombo);
+            game.launch(window,listBG, listHUD, listDecors, listPlayers,listEnnemis, gravity, playerDeplacement, nbJoueur, ascendDecrement,listeSort,height,width,listCombo,keysPressed);
         elif(boutonRes==2):
             nbJoueur = 2;
             listHUD.append(util.setHUD(window, './data/HUD/HUD2Joueur.png'));
@@ -103,7 +105,7 @@ while 1:
             if(len(listPlayers) == 1):
                 listPlayers.append(player.Player(300,100,'./sprite/Joueur2/Mage2AV-1.png',100,1," ",2,""));
             listHUD.append(util.setHUDPV(window, './data/HUD/BarDeVie.png', listPlayers[1]))
-            game.launch(window,listBG, listHUD, listDecors, listPlayers, listEnnemis, gravity, playerDeplacement, nbJoueur, ascendDecrement,listeSort,height,width,listCombo);
+            game.launch(window,listBG, listHUD, listDecors, listPlayers, listEnnemis, gravity, playerDeplacement, nbJoueur, ascendDecrement,listeSort,height,width,listCombo,keysPressed);
         elif(boutonRes==3):
             menu.menuop(window,width,height)
         elif(boutonRes==4):
@@ -113,4 +115,4 @@ while 1:
             sys.exit()
     else:
         listHUD.append(util.setHUD(window, './data/HUD/HUD1Joueur.png'));
-        game.launch(window,listBG, listHUD, listDecors, listPlayers, listEnnemis, gravity, playerDeplacement, nbJoueur, ascendDecrement,listeSort,height,width,listCombo);
+        game.launch(window,listBG, listHUD, listDecors, listPlayers, listEnnemis, gravity, playerDeplacement, nbJoueur, ascendDecrement,listeSort,height,width,listCombo,keysPressed);
